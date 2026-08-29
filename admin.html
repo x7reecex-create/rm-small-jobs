@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RM Small Jobs Admin</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--navy:#061a2b;--orange:#f46b20;--bg:#f5f2eb;--white:#fff;--text:#14222d;--muted:#687780;--line:#dce2e5;--danger:#b42318}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px system-ui,-apple-system,sans-serif}button,input,textarea{font:inherit}
+header{background:var(--navy);color:#fff;padding:15px 16px;position:sticky;top:0;z-index:10}.head{max-width:760px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
+main{max-width:760px;margin:auto;padding:20px 16px 100px}h1{font-size:30px;margin:5px 0}h2{font-size:20px;margin:0 0 12px}.muted{color:var(--muted);font-size:13px}
+.card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:16px;margin:12px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px}.stat b{display:block;font-size:25px;margin-top:3px}
+.field{margin:12px 0}.field label{display:block;font-size:11px;font-weight:900;color:var(--muted);margin-bottom:5px}input,textarea{width:100%;padding:11px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--text)}
+.btn{border:0;border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer}.primary{background:var(--orange);color:#fff}.secondary{background:#fff;color:var(--text);border:1px solid var(--line)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.tabs{display:flex;gap:6px;overflow:auto;margin-bottom:15px}.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:99px;padding:8px 12px;font-size:12px;font-weight:800}.tab.on{background:var(--navy);color:#fff}
+.row{border-top:1px solid var(--line);padding:14px 0}.row:first-child{border-top:0}.preview{background:var(--navy);color:#fff;border-radius:13px;padding:18px}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:5px;z-index:20}.nav button{border:0;background:#fff;color:var(--muted);padding:8px 2px;font-size:11px;font-weight:900;border-radius:10px}.nav .on{background:#fff0e8;color:var(--orange)}
+.toast{position:fixed;left:50%;bottom:75px;transform:translateX(-50%);background:var(--navy);color:#fff;padding:11px 15px;border-radius:10px;display:none;z-index:50;font-size:13px;max-width:90%;text-align:center}
+.error{background:#fff1f0;border:1px solid #f2c5c1;color:var(--danger);padding:12px;border-radius:10px;margin:12px 0}
+@media(min-width:700px){.nav{position:static;max-width:760px;margin:auto;border:0}main{padding-bottom:30px}}
+</style>
+</head>
+<body>
+<div id="app"></div><div id="toast" class="toast"></div>
+<script>
+let sb=null,cfg=null;
+let cms={settings:null,services:[],faqs:[],areas:[],gallery:[]};
+const app=document.getElementById("app"),toast=document.getElementById("toast");
+
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
+function say(v){toast.textContent=v;toast.style.display="block";setTimeout(()=>toast.style.display="none",2000);}
+function err(v){return `<div class="error">${esc(v)}</div>`;}
+
+function setup(){
+app.innerHTML=`<main><div class="card">
+<h1>RM Small Jobs</h1><p class="muted">Connect the private admin panel to Supabase.</p>
+<div class="field"><label>SUPABASE PROJECT URL</label><input id="url" value="https://metaquqdynxwkplojlhwq.supabase.co"></div>
+<div class="field"><label>ANON / PUBLISHABLE KEY</label><textarea id="key" rows="5" placeholder="Paste your browser-safe key"></textarea></div>
+<button class="btn primary" onclick="connect()">Connect</button>
+<p class="muted">Never use a service-role or secret key here.</p>
+</div></main>`;
+}
+async function connect(){
+const url=document.getElementById("url").value.trim(),key=document.getElementById("key").value.trim();
+if(!url||!key)return say("Enter both fields");
+cfg={url,key};localStorage.setItem("rm_sb",JSON.stringify(cfg));start();
+}
+function login(){
+app.innerHTML=`<main><div class="card"><h1>RM Small Jobs</h1><p class="muted">Private admin login</p>
+<div class="field"><label>EMAIL</label><input id="email" type="email"></div>
+<div class="field"><label>PASSWORD</label><input id="pass" type="password"></div>
+<button class="btn primary" onclick="signin()">Sign in</button></div></main>`;
+}
+async function signin(){
+const r=await sb.auth.signInWithPassword({email:document.getElementById("email").value,password:document.getElementById("pass").value});
+if(r.error)say(r.error.message);else start();
+}
+
+function showPasswordReset(){
+app.innerHTML=`<main><div class="card"><h1>Set new password</h1><p class="muted">Choose a new password for your RM Small Jobs admin.</p><div class="field"><label>NEW PASSWORD</label><input id="newpass" type="password" minlength="8"></div><div class="field"><label>CONFIRM PASSWORD</label><input id="newpass2" type="password" minlength="8"></div><button class="btn primary" onclick="changePassword()">Save new password</button></div></main>`;
+}
+async function changePassword(){
+const p=document.getElementById("newpass").value,p2=document.getElementById("newpass2").value;
+if(p.length<8)return say("Password must be at least 8 characters.");
+if(p!==p2)return say("Passwords don't match.");
+const r=await sb.auth.updateUser({password:p});
+if(r.error)say(r.error.message);else{say("Password changed");setTimeout(()=>location.href="/admin.html",700);}
+}
+async function start(){
+try{cfg=JSON.parse(localStorage.getItem("rm_sb")||"null");}catch{cfg=null}
+if(!cfg)return setup();
+try{sb=window.supabase.createClient(cfg.url,cfg.key);sb.auth.onAuthStateChange((event,session)=>{if(event==="PASSWORD_RECOVERY"&&session)showPasswordReset();});}catch(e){app.innerHTML=`<main><div class="card"><h1>Connection error</h1>${err(e.message)}<button class="btn secondary" onclick="localStorage.removeItem('rm_sb');location.reload()">Start again</button></div></main>`;return;}
+const r=await sb.auth.getSession();
+if(r.error||!r.data.session){login();return;}
+shell();home();
+}
+function shell(){
+app.innerHTML=`<header><div class="head"><div><b>RM Small Jobs</b><div style="color:#aabcc5;font-size:12px">Private control centre</div></div><button class="btn secondary" onclick="logout()">Log out</button></div></header>
+<main id="main"></main>
+<nav class="nav"><button id="n-home" onclick="go('home')">⌂<br>Home</button><button id="n-website" onclick="go('website')">▣<br>Website</button><button id="n-jobs" onclick="go('jobs')">✓<br>Jobs</button><button id="n-money" onclick="go('money')">£<br>Money</button></nav>`;
+}
+function active(p){document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("on"));const b=document.getElementById("n-"+p);if(b)b.classList.add("on");}
+function go(p){active(p);({home,website,jobs,money}[p])();}
+async function logout(){await sb.auth.signOut();location.reload();}
+
+async function home(){
+active("home");const m=document.getElementById("main");m.innerHTML="<h1>Overview</h1><div class='card'>Loading...</div>";
+try{
+const [j,c,e,s]=await Promise.all([sb.from("jobs").select("price,status"),sb.from("customers").select("id"),sb.from("expenses").select("amount"),sb.from("services").select("id").eq("enabled",true)]);
+const jobs=j.data||[],customers=c.data||[],expenses=e.data||[],services=s.data||[];
+m.innerHTML=`<h1>Overview</h1><p class="muted">Your business at a glance.</p><div class="grid">
+<div class="stat">Booked<b>${jobs.filter(x=>x.status==="Booked").length}</b></div>
+<div class="stat">Customers<b>${customers.length}</b></div>
+<div class="stat">Live services<b>${services.length}</b></div>
+<div class="stat">Expenses<b>£${expenses.reduce((a,x)=>a+Number(x.amount||0),0).toFixed(0)}</b></div></div>
+<div class="card"><h2>Quick actions</h2><div class="actions"><button class="btn primary" onclick="go('website')">Edit website</button><button class="btn secondary" onclick="newJob()">+ New job</button><button class="btn secondary" onclick="newCustomer()">+ Customer</button><button class="btn secondary" onclick="newExpense()">+ Expense</button></div></div>`;
+}catch(e){m.innerHTML="<h1>Overview</h1>"+err(e.message);}
+}
+
+async function website(){
+active("website");const m=document.getElementById("main");m.innerHTML="<h1>Website</h1><div class='card'>Loading...</div>";
+try{
+const [a,b,c,d,e]=await Promise.all([
+sb.from("site_settings").select("*").limit(1).maybeSingle(),
+sb.from("services").select("*").order("sort_order"),
+sb.from("faqs").select("*").order("sort_order"),
+sb.from("service_areas").select("*").order("sort_order"),
+sb.from("gallery").select("*").order("created_at",{ascending:false})
+]);
+cms={settings:a.data,services:b.data||[],faqs:c.data||[],areas:d.data||[],gallery:e.data||[]};renderWeb("home");
+}catch(e){m.innerHTML="<h1>Website</h1>"+err(e.message);}
+}
+function renderWeb(t){
+const m=document.getElementById("main");
+m.innerHTML=`<h1>Website</h1><p class="muted">Customer-facing content.</p><div class="tabs">
+<button class="tab ${t==="home"?"on":""}" onclick="renderWeb('home')">Homepage</button>
+<button class="tab ${t==="services"?"on":""}" onclick="renderWeb('services')">Services</button>
+<button class="tab ${t==="faq"?"on":""}" onclick="renderWeb('faq')">FAQs</button>
+<button class="tab ${t==="areas"?"on":""}" onclick="renderWeb('areas')">Areas</button>
+<button class="tab ${t==="gallery"?"on":""}" onclick="renderWeb('gallery')">Gallery</button></div><div id="panel"></div>`;
+if(t==="home")homePanel();if(t==="services")servicesPanel();if(t==="faq")faqPanel();if(t==="areas")areasPanel();if(t==="gallery")galleryPanel();
+}
+function homePanel(){
+const x=cms.settings||{};document.getElementById("panel").innerHTML=`<div class="card"><h2>Homepage</h2>
+<div class="field"><label>HEADLINE</label><input id="headline" value="${esc(x.headline||"Small jobs. Done properly.")}"></div>
+<div class="field"><label>INTRO</label><textarea id="intro" rows="4">${esc(x.intro||"")}</textarea></div>
+<div class="field"><label>BOUNDARY / REASSURANCE</label><textarea id="boundary" rows="4">${esc(x.boundary||"")}</textarea></div>
+<div class="field"><label>PHONE</label><input id="phone" value="${esc(x.phone||"")}"></div>
+<div class="field"><label>WHATSAPP</label><input id="whatsapp" value="${esc(x.whatsapp||"")}"></div>
+<button class="btn primary" onclick="saveHome()">Save homepage</button></div>
+<div class="card"><h2>Preview</h2><div class="preview"><small>LIVE PREVIEW</small><h2>${esc(x.headline||"Small jobs. Done properly.")}</h2><p>${esc(x.intro||"")}</p></div></div>`;
+}
+async function saveHome(){
+const d={headline:headline.value,intro:intro.value,boundary:boundary.value,phone:phone.value,whatsapp:whatsapp.value,updated_at:new Date().toISOString()};
+const r=cms.settings?await sb.from("site_settings").update(d).eq("id",cms.settings.id):await sb.from("site_settings").insert(d);
+if(r.error)say(r.error.message);else{say("Homepage saved");await website();}
+}
+function servicesPanel(){
+document.getElementById("panel").innerHTML=`<div class="card"><div class="actions"><div style="flex:1"><h2>Services & prices</h2><p class="muted">Control what appears on the website.</p></div><button class="btn primary" onclick="addService()">+ Service</button></div>
+${cms.services.map((x,i)=>`<div class="row"><div class="field"><label>NAME</label><input id="sn${i}" value="${esc(x.name)}"></div><div class="field"><label>PRICE</label><input id="sp${i}" value="${esc(x.price)}"></div><div class="field"><label>DESCRIPTION</label><textarea id="sd${i}" rows="3">${esc(x.description)}</textarea></div><label><input id="se${i}" type="checkbox" ${x.enabled?"checked":""} style="width:auto"> Visible</label><br><br><button class="btn primary" onclick="saveService(${i})">Save</button></div>`).join("")}</div>`;
+}
+async function saveService(i){
+const x=cms.services[i],r=await sb.from("services").update({name:document.getElementById("sn"+i).value,price:document.getElementById("sp"+i).value,description:document.getElementById("sd"+i).value,enabled:document.getElementById("se"+i).checked,updated_at:new Date().toISOString()}).eq("id",x.id);
+if(r.error)say(r.error.message);else{say("Service saved");await website();}
+}
+async function addService(){const r=await sb.from("services").insert({name:"New service",price:"Quote",description:"",enabled:true,featured:false,sort_order:cms.services.length});if(r.error)say(r.error.message);else{say("Service added");await website();}}
+
+function faqPanel(){document.getElementById("panel").innerHTML=`<div class="card"><div class="actions"><h2 style="flex:1">FAQs</h2><button class="btn primary" onclick="addFaq()">+ FAQ</button></div>${cms.faqs.map((x,i)=>`<div class="row"><div class="field"><label>QUESTION</label><input id="fq${i}" value="${esc(x.question)}"></div><div class="field"><label>ANSWER</label><textarea id="fa${i}" rows="4">${esc(x.answer)}</textarea></div><button class="btn primary" onclick="saveFaq(${i})">Save</button></div>`).join("")}</div>`;}
+async function saveFaq(i){const x=cms.faqs[i],r=await sb.from("faqs").update({question:document.getElementById("fq"+i).value,answer:document.getElementById("fa"+i).value}).eq("id",x.id);if(r.error)say(r.error.message);else{say("FAQ saved");await website();}}
+async function addFaq(){const r=await sb.from("faqs").insert({question:"New question",answer:"",sort_order:cms.faqs.length});if(r.error)say(r.error.message);else{say("FAQ added");await website();}}
+
+function areasPanel(){document.getElementById("panel").innerHTML=`<div class="card"><div class="actions"><h2 style="flex:1">Service areas</h2><button class="btn primary" onclick="addArea()">+ Area</button></div>${cms.areas.map((x,i)=>`<div class="row"><input id="an${i}" value="${esc(x.name)}"><br><br><button class="btn primary" onclick="saveArea(${i})">Save</button></div>`).join("")}</div>`;}
+async function saveArea(i){const x=cms.areas[i],r=await sb.from("service_areas").update({name:document.getElementById("an"+i).value}).eq("id",x.id);if(r.error)say(r.error.message);else{say("Area saved");await website();}}
+async function addArea(){const r=await sb.from("service_areas").insert({name:"New area",sort_order:cms.areas.length});if(r.error)say(r.error.message);else{say("Area added");await website();}}
+
+function galleryPanel(){document.getElementById("panel").innerHTML=`<div class="card"><div class="actions"><h2 style="flex:1">Gallery</h2><button class="btn primary" onclick="addGallery()">+ Photo</button></div>${cms.gallery.map((x,i)=>`<div class="row"><div class="field"><label>IMAGE URL</label><input id="gu${i}" value="${esc(x.image_url)}"></div><div class="field"><label>TITLE</label><input id="gt${i}" value="${esc(x.title)}"></div><label><input id="gp${i}" type="checkbox" ${x.published?"checked":""} style="width:auto"> Public</label><br><br><button class="btn primary" onclick="saveGallery(${i})">Save</button></div>`).join("")}</div>`;}
+async function saveGallery(i){const x=cms.gallery[i],r=await sb.from("gallery").update({image_url:document.getElementById("gu"+i).value,title:document.getElementById("gt"+i).value,published:document.getElementById("gp"+i).checked}).eq("id",x.id);if(r.error)say(r.error.message);else{say("Gallery saved");await website();}}
+async function addGallery(){const r=await sb.from("gallery").insert({image_url:"",title:"New gallery item",description:"",published:false});if(r.error)say(r.error.message);else{say("Gallery item added");await website();}}
+
+async function jobs(){
+active("jobs");const m=document.getElementById("main");m.innerHTML="<h1>Jobs</h1><div class='card'>Loading...</div>";
+const r=await sb.from("jobs").select("*").order("scheduled_at");if(r.error){m.innerHTML="<h1>Jobs</h1>"+err(r.error.message);return;}
+const d=r.data||[];m.innerHTML=`<h1>Jobs</h1><p class="muted">${d.length} job${d.length===1?"":"s"}</p><button class="btn primary" onclick="newJob()">+ New job</button><div class="card">${d.length?d.map(x=>`<div class="row"><b>${esc(x.title||"Untitled job")}</b><div class="muted">${esc(x.status||"No status")}</div>${x.price!=null?`<div>£${Number(x.price).toFixed(2)}</div>`:""}</div>`).join(""):"<p class='muted'>No jobs yet.</p>"}</div>`;
+}
+function newJob(){say("Job creator coming next");}
+function newCustomer(){say("Customer creator coming next");}
+function newExpense(){say("Expense creator coming next");}
+
+async function money(){
+active("money");const m=document.getElementById("main");m.innerHTML="<h1>Money</h1><div class='card'>Loading...</div>";
+const r=await sb.from("expenses").select("*").order("created_at",{ascending:false});if(r.error){m.innerHTML="<h1>Money</h1>"+err(r.error.message);return;}
+const d=r.data||[],total=d.reduce((a,x)=>a+Number(x.amount||0),0);m.innerHTML=`<h1>Money</h1><div class="grid"><div class="stat">Total expenses<b>£${total.toFixed(2)}</b></div><div class="stat">Entries<b>${d.length}</b></div></div><div class="card"><h2>Expenses</h2>${d.length?d.map(x=>`<div class="row"><b>£${Number(x.amount||0).toFixed(2)}</b>${x.description?`<div class="muted">${esc(x.description)}</div>`:""}</div>`).join(""):"<p class='muted'>No expenses recorded.</p>"}</div>`;
+}
+start();
+</script>
+</body>
+</html>
