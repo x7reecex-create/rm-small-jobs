@@ -162,6 +162,47 @@ const r=await sb.from("expenses").select("*").order("created_at",{ascending:fals
 const d=r.data||[],total=d.reduce((a,x)=>a+Number(x.amount||0),0);m.innerHTML=`<h1>Money</h1><div class="grid"><div class="stat">Total expenses<b>£${total.toFixed(2)}</b></div><div class="stat">Entries<b>${d.length}</b></div></div><div class="card"><h2>Expenses</h2>${d.length?d.map(x=>`<div class="row"><b>£${Number(x.amount||0).toFixed(2)}</b>${x.description?`<div class="muted">${esc(x.description)}</div>`:""}</div>`).join(""):"<p class='muted'>No expenses recorded.</p>"}</div>`;
 }
 start();
-</script>
+</sb.auth.onAuthStateChange((event, session) => {
+  if (event === "PASSWORD_RECOVERY" && session) {
+    app.innerHTML = `
+      <main>
+        <div class="card">
+          <h1>Set new password</h1>
+          <p class="muted">Choose a new password for your RM Small Jobs admin.</p>
+
+          <div class="field">
+            <label>NEW PASSWORD</label>
+            <input id="newpass" type="password" minlength="8">
+          </div>
+
+          <div class="field">
+            <label>CONFIRM PASSWORD</label>
+            <input id="newpass2" type="password" minlength="8">
+          </div>
+
+          <button class="btn primary" onclick="changePassword()">
+            Save new password
+          </button>
+        </div>
+      </main>`;
+  }
+});
+
+async function changePassword() {
+  const p = document.getElementById("newpass").value;
+  const p2 = document.getElementById("newpass2").value;
+
+  if (p.length < 8) return say("Password must be at least 8 characters.");
+  if (p !== p2) return say("Passwords don't match.");
+
+  const { error } = await sb.auth.updateUser({ password: p });
+
+  if (error) {
+    say(error.message);
+  } else {
+    alert("Password changed successfully.");
+    location.href = "/admin.html";
+  }
+}script>
 </body>
 </html>
