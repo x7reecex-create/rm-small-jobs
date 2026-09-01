@@ -109,6 +109,10 @@ h2{font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-2px;margin:7p
 .detail{background:#fff;border:1px solid var(--line);border-radius:9px;padding:12px 14px}
 .detail small{display:block;color:var(--muted);font-size:9px;letter-spacing:1.1px;font-weight:900}
 .detail strong{font-size:13px}
+.qr-block{display:flex;align-items:center;gap:14px;margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px}
+.qr{width:106px;flex:0 0 106px;border-radius:7px}
+.qr-copy strong{display:block;font-size:13px;margin-bottom:3px}
+.qr-copy span{display:block;color:var(--muted);font-size:11px;line-height:1.5}
 .note{margin-top:18px;border-left:4px solid var(--orange);background:#f7f4ed;padding:13px;color:#5d6970;font-size:11px;line-height:1.55}
 
 footer{background:#041522;color:#fff;padding:40px 0}
@@ -145,6 +149,8 @@ footer{background:#041522;color:#fff;padding:40px 0}
  .trust-grid{border-left:0}
  .trust{border-left:1px solid #2b485a}
  .quote-shell{padding:20px}
+ .qr-block{align-items:flex-start}
+ .qr{width:92px;flex-basis:92px}
  .floating-wa{display:block}
  body{padding-bottom:66px}
 }
@@ -261,6 +267,10 @@ footer{background:#041522;color:#fff;padding:40px 0}
 <a class="detail" href="mailto:x7reece@gmail.com"><small>EMAIL</small><strong>x7reece@gmail.com</strong></a>
 <div class="detail"><small>FACEBOOK</small><strong>RM Small Jobs</strong></div>
 </div>
+<a class="qr-block" href="https://wa.me/447365309553?text=Hi%2C%20I%27m%20looking%20for%20a%20quote%20from%20RM%20Small%20Jobs." aria-label="Open RM Small Jobs on WhatsApp">
+<img class="qr" src="whatsapp-qr.png" alt="QR code for RM Small Jobs WhatsApp">
+<div class="qr-copy"><strong>Scan to WhatsApp</strong><span>Open a chat with RM Small Jobs on your phone.</span></div>
+</a>
 <div class="note">Starting prices are not guaranteed fixed prices. Final price is confirmed after the job has been described or reviewed.</div>
 </aside>
 </div>
