@@ -100,6 +100,17 @@ h2{font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-2px;margin:7p
 .field textarea{resize:vertical;min-height:120px}
 .field input:focus,.field textarea:focus{border-color:#8fa1aa;box-shadow:0 0 0 3px #eef1f2}
 .form-note{color:#78868d;font-size:11px;margin:0}
+.quote-follow-up{margin-top:24px;padding:24px;background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:12px;scroll-margin-top:100px}
+.quote-follow-up h3{margin:0 0 10px;font-size:24px;line-height:1.2;letter-spacing:-.5px}
+.quote-follow-up p{font-size:16px;color:#53616a;line-height:1.6}
+.quote-follow-up .buttons{margin-top:18px;align-items:stretch}
+.quote-follow-up .btn{font-size:14px;min-height:48px;text-align:center}
+.quote-follow-up .secondary{color:var(--navy);border-color:#607582}
+.quote-follow-up .primary{color:var(--navy)}
+.quote-follow-up .edit-quote{display:block;margin-top:18px;border:0;padding:0;background:transparent;color:var(--navy);text-decoration:underline;font-size:14px;cursor:pointer}
+.quote-follow-up .form-note{font-size:14px;margin-top:16px}
+.quote-follow-up:focus{outline:2px solid var(--orange);outline-offset:4px}
+[hidden]{display:none!important}
 .quote-side{background:var(--soft);border-radius:14px;padding:22px;align-self:start}
 .quote-side h3{margin:0 0 13px;font-size:18px}
 .quote-side ul{padding:0;margin:0;list-style:none;display:grid;gap:10px}
@@ -253,6 +264,16 @@ footer{background:#041522;color:#fff;padding:40px 0}
 <button class="btn primary" type="submit">Open quote in WhatsApp</button>
 <p class="form-note">Nothing is submitted to this website. The details are only used to create your WhatsApp message.</p>
 </form>
+<div class="quote-follow-up" id="quoteFollowUp" hidden tabindex="-1" aria-labelledby="quoteFollowUpTitle">
+<h3 id="quoteFollowUpTitle">Finish your request in WhatsApp</h3>
+<p>Tap <strong>Send</strong> in WhatsApp, then return to this page. You can add photos to help me price the job.</p>
+<div class="buttons">
+<a class="btn secondary" id="reopenWhatsApp" href="https://wa.me/447365309553" target="_blank" rel="noopener noreferrer">Open WhatsApp again</a>
+<button class="btn primary" id="confirmQuoteSent" type="button">I’ve sent my request</button>
+</div>
+<p class="form-note">Only confirm once you’ve sent your message. If WhatsApp didn’t open, use the button above.</p>
+<button class="edit-quote" id="editQuote" type="button">Edit job details</button>
+</div>
 </div>
 <aside class="quote-side">
 <h3>What helps me price it</h3>
@@ -290,8 +311,47 @@ const menu=document.getElementById('menu'),nav=document.getElementById('nav');
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',open)});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 
-document.getElementById('quoteForm').addEventListener('submit',e=>{
+const quoteForm=document.getElementById('quoteForm');
+const quoteFollowUp=document.getElementById('quoteFollowUp');
+const reopenWhatsApp=document.getElementById('reopenWhatsApp');
+
+function startWhatsAppQuote(url){
+  reopenWhatsApp.href=url;
+  quoteForm.hidden=true;
+  quoteFollowUp.hidden=false;
+  window.open(url,'_blank','noopener,noreferrer');
+  quoteFollowUp.scrollIntoView({block:'center'});
+  quoteFollowUp.focus({preventScroll:true});
+}
+
+document.querySelectorAll('a[href^="https://wa.me/"]').forEach(link=>{
+  if(link.id==='reopenWhatsApp') return;
+  link.addEventListener('click',e=>{
+    if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+    e.preventDefault();
+    startWhatsAppQuote(link.href);
+  });
+});
+
+document.getElementById('confirmQuoteSent').addEventListener('click',()=>{
+  window.location.assign(new URL('thank-you/',window.location.href).href);
+});
+
+document.getElementById('editQuote').addEventListener('click',()=>{
+  quoteFollowUp.hidden=true;
+  quoteForm.hidden=false;
+  document.getElementById('qName').focus();
+});
+
+['qArea','qJob'].forEach(id=>document.getElementById(id).addEventListener('input',e=>e.target.setCustomValidity('')));
+
+quoteForm.addEventListener('submit',e=>{
   e.preventDefault();
+  ['qArea','qJob'].forEach(id=>{
+    const field=document.getElementById(id);
+    field.setCustomValidity(field.value.trim() ? '' : 'Please fill in this field.');
+  });
+  if(!quoteForm.reportValidity()) return;
   const name=document.getElementById('qName').value.trim();
   const area=document.getElementById('qArea').value.trim();
   const job=document.getElementById('qJob').value.trim();
@@ -304,7 +364,7 @@ document.getElementById('quoteForm').addEventListener('submit',e=>{
     '',
     'I can send photos here as well.'
   ].filter(Boolean);
-  window.location.href='https://wa.me/447365309553?text='+encodeURIComponent(lines.join('\n'));
+  startWhatsAppQuote('https://wa.me/447365309553?text='+encodeURIComponent(lines.join('\n')));
 });
 </script>
 </body>
