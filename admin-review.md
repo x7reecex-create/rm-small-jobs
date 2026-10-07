@@ -1,3 +1,5 @@
+> Archived review of the earlier app release. The current business-system implementation and Supabase setup are documented in README.md and business-system-review.md.
+
 # RM Small Jobs app update — 7 October 2026
 
 The existing `admin.html` app keeps its Supabase connection and authentication route. No new backend, paid service or customer-data migration was introduced. The original logo and WhatsApp QR remain unchanged.
