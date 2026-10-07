@@ -31,6 +31,17 @@ function setup(message=''){
 }
 async function connect(form){await submit(form,async()=>{cfg=validateConnection(value('url'),value('key'));localStorage.setItem('rm_sb',JSON.stringify(cfg));await start();},false);}
 async function resetConnection(){try{if(sb&&session)check(await sb.auth.signOut(),'Sign out');authSubscription?.unsubscribe();clearPrivate();localStorage.removeItem('rm_sb');sb=null;cfg=null;setup();}catch(e){say(e.message);}}
+function connectionFailed(error){return /load failed|failed to fetch|networkerror|network request failed|fetch failed/i.test(error?.message||'');}
+async function useWebsiteConnection(){
+  if(session)return say('Sign out before changing the connection.');
+  const resetEmail=document.getElementById('reset_email')?.value;
+  try{
+    const next=validateConnection(sharedConfig.supabaseUrl,sharedConfig.supabaseKey);
+    authSubscription?.unsubscribe();clearPrivate();sb=null;cfg=next;
+    localStorage.setItem('rm_sb',JSON.stringify(next));await start();
+    if(resetEmail!==undefined&&document.getElementById('email')){showForgotPassword();document.getElementById('reset_email').value=resetEmail;}
+  }catch(e){say(e.message);}
+}
 function login(message=''){
   clearPrivate();authCard(`<h1>Sign in</h1><p class="muted">Your private RM Small Jobs records.</p>${message?err(message):''}<form onsubmit="event.preventDefault();signin(this)">${field('email','Email','','email','required autocomplete="username"')}${field('pass','Password','','password','required autocomplete="current-password"')}<div class="form-error" role="alert"></div><div class="actions"><button class="btn primary" type="submit">Sign in</button><button class="btn secondary" type="button" onclick="showForgotPassword()">Forgot password?</button></div></form><button class="inline-link" type="button" onclick="resetConnection()">Change connection</button>`);
 }
@@ -53,6 +64,8 @@ async function start(){
   try{
     let stored=null;try{stored=JSON.parse(localStorage.getItem('rm_sb')||'null');}catch{}
     const shared=sharedConfig.supabaseKey?{url:sharedConfig.supabaseUrl,key:sharedConfig.supabaseKey}:null;
+    // Repair the old project-address typo without changing other saved projects.
+    if(shared&&stored?.url?.replace(/\/$/,'')==='https://metaquqdynxwkplojlhwq.supabase.co'){stored=shared;localStorage.setItem('rm_sb',JSON.stringify(shared));}
     cfg=stored||shared;if(!cfg)return setup();cfg=validateConnection(cfg.url,cfg.key);
     if(!window.supabase?.createClient)return setup('The sign-in library did not load. Check your connection and refresh.');
     authSubscription?.unsubscribe();sb=window.supabase.createClient(cfg.url,cfg.key);
@@ -87,7 +100,12 @@ async function deleteEntity(table,id){requireAuth();return checkSaved(await sb.f
 async function submit(form,work,authenticated=true,validate=true){
   if(form.dataset.busy==='true'||(validate&&!form.reportValidity()))return;
   form.dataset.busy='true';const buttons=[...form.querySelectorAll('button')],box=form.querySelector('.form-error');box.innerHTML='';buttons.forEach(b=>b.disabled=true);
-  try{if(authenticated)requireAuth();return await work();}catch(e){if(form.isConnected){box.innerHTML=err(e.message);box.scrollIntoView({block:'nearest'});}else say(e.message);}finally{form.dataset.busy='false';buttons.forEach(b=>b.disabled=false);}
+  try{if(authenticated)requireAuth();return await work();}catch(e){if(form.isConnected){
+    if(!authenticated&&connectionFailed(e)){
+      box.innerHTML=err('Could not reach the sign-in service. Check your internet connection and try again.')+'<p class="muted">If this page is open inside another app, open it in Safari or Chrome and retry.</p>'+(!session&&sharedConfig.supabaseKey?'<button class="btn secondary" type="button" onclick="useWebsiteConnection()">Use website connection</button>':'');
+    }else box.innerHTML=err(e.message);
+    box.scrollIntoView({block:'nearest'});
+  }else say(e.message);}finally{form.dataset.busy='false';buttons.forEach(b=>b.disabled=false);}
 }
 function publicConnectionMatches(){return sharedConfig.supabaseUrl?.replace(/\/$/,'')===cfg?.url&&sharedConfig.supabaseKey===cfg?.key&&!!cfg?.key;}
 function cmsNotice(){return publicConnectionMatches()?'Published content appears on the customer website when it is refreshed. Keep the homepage publication switch off until you have checked all the content.':'This device is connected, but the public website connection has not been configured to match it. Saves stay in the database until supabase-config.js is updated. Use the setup instructions before publishing.';}
