@@ -1,0 +1,8 @@
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.*
+rm-small-jobs-private-backup-*.json
+playwright-report/
+test-results/
