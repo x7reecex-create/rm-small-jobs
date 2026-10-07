@@ -106,9 +106,9 @@ h2{font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-2px;margin:7p
 .detail small{display:block;color:var(--muted);font-size:11px;letter-spacing:1.1px;font-weight:900}
 .detail strong{font-size:15px;overflow-wrap:anywhere}
 .qr-block{display:flex;align-items:center;gap:14px;margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px}
-.qr{width:106px;flex:0 0 106px;border-radius:7px}
-.qr-copy strong{display:block;font-size:13px;margin-bottom:3px}
-.qr-copy span{display:block;color:var(--muted);font-size:11px;line-height:1.5}
+.qr{width:132px;flex:0 0 132px;image-rendering:pixelated}
+.qr-copy strong{display:block;font-size:14px;margin-bottom:3px}
+.qr-copy span{display:block;color:var(--muted);font-size:13px;line-height:1.5}
 footer{background:#041522;color:#fff;padding:28px 0}
 .footer{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
 .footer-logo{width:105px;filter:url(#logoCutout)}
@@ -126,7 +126,6 @@ footer{background:#041522;color:#fff;padding:28px 0}
  .cards{grid-template-columns:1fr 1fr}
  .footer{grid-template-columns:1fr 1fr;gap:20px}
  .footer>div:first-child{grid-column:1/-1}
- .qr-block{display:none}
 }
 @media(max-width:560px){
  .wrap{width:calc(100% - 28px)}
@@ -149,6 +148,8 @@ footer{background:#041522;color:#fff;padding:28px 0}
  .coverage{grid-template-columns:1fr;gap:10px;margin-top:26px;padding-top:22px}
  .quote-shell{padding:20px}
  .quote-side{padding:18px}
+ .qr-block{flex-direction:column;align-items:center;text-align:center;gap:10px;padding:16px}
+ .qr{flex-basis:auto}
  .footer-logo{width:80px}
  .footer .muted{margin-bottom:0}
 }
@@ -251,7 +252,7 @@ footer{background:#041522;color:#fff;padding:28px 0}
 </div>
 <a class="qr-block" href="https://wa.me/447365309553?text=Hi%2C%20I%27m%20looking%20for%20a%20quote%20from%20RM%20Small%20Jobs." aria-label="Open RM Small Jobs on WhatsApp">
 <img class="qr" src="whatsapp-qr.png" width="396" height="396" alt="QR code for RM Small Jobs WhatsApp" loading="lazy" decoding="async">
-<div class="qr-copy"><strong>Scan to WhatsApp</strong><span>Open a chat with RM Small Jobs on your phone.</span></div>
+<div class="qr-copy"><strong>Scan or tap to WhatsApp</strong><span>Open a chat with RM Small Jobs.</span></div>
 </a>
 </aside>
 </div>
