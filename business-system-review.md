@@ -1,6 +1,6 @@
 # Business-system upgrade review
 
-This upgrade is prepared for the existing GitHub Pages/Supabase project. It is not activated on the live database. Keep the current production version until the database setup and owner enrolment are complete.
+The database upgrade is installed in the existing Supabase project as of 7 October 2026. The confirmed owner is enrolled and the initial CMS content remains unpublished. The updated application is on PR #1; Auth configuration and owner browser verification remain before deployment. See [setup status](supabase/setup-status.md).
 
 ## Result
 
@@ -24,7 +24,7 @@ JavaScript syntax, whitespace checks and preservation checks for the original lo
 
 ## Live blocker and activation order
 
-The workspace has no live browser-safe Supabase key, signed-in owner session, database schema/policy settings or SQL execution access. The new live workflows, RLS, email delivery and real persistence therefore remain unverified.
+The existing live schema, policies, grants, public functions/views, app triggers and storage buckets were inspected. The transactional setup and owner enrolment are complete. An enabled publishable key is configured on the PR branch, with the project URL typo corrected in both connection defaults. Live owner CRUD and anonymous/unapproved-user denial passed; test writes were rolled back. Anonymous HTTP checks passed with the configured key. Live owner browser sign-in, email recovery and deployment remain unverified.
 
 1. Keep a private database backup and run the read-only preflight.
 2. Run the transactional migration, resolve any compatibility errors without deleting data, then enrol the actual owner UID.

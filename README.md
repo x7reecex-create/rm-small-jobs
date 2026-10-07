@@ -30,7 +30,7 @@ The dashboard can export private JSON backups. Keep exports private. They exclud
 
 ## One-time Supabase setup
 
-The live project's connection key and database settings are unavailable in this workspace. The code cannot activate the live database by itself. Use your **existing project**, not a replacement database.
+The existing project was inspected and upgraded on 7 October 2026. The owner is enrolled, the empty CMS was seeded as unpublished drafts, and this PR contains the corrected project URL and an enabled publishable key. Live database permission checks and anonymous HTTP checks passed. See [setup status](supabase/setup-status.md) for evidence and remaining Auth/deployment steps. The instructions below also cover setting up another existing project.
 
 1. Open your project at [Supabase](https://supabase.com/dashboard) and keep a private database backup.
 2. Open **SQL Editor → New query** and run [00_preflight.sql](supabase/00_preflight.sql). This only inspects the current setup.
@@ -49,7 +49,7 @@ Detailed setup/troubleshooting: [Supabase guide](supabase/README.md).
 
 CMS tables: `site_settings`, `services`, `faqs`, `service_areas`, `gallery`. Private business tables: `customers`, `jobs`, `expenses`. `business_admins` holds approved login UIDs.
 
-The migration preserves existing IDs, records and extra payment fields. `jobs.price` remains the quoted price; `final_price` is separate. Legacy expense notes are retained and can fill blank descriptions. Historical unfamiliar statuses/categories remain stored, but choose a current value before saving changes to those records.
+The migration preserves existing IDs, records and extra payment fields. `jobs.price` remains the quoted price and can be empty before a quote is known; `final_price` is separate. New jobs default to Enquiry. Saved prices and historical statuses are retained. Legacy expense notes are retained and can fill blank descriptions. Historical unfamiliar statuses/categories remain stored, but choose a current value before saving changes to those records.
 
 **Row Level Security (RLS)** makes Supabase check who may access each row. After setup, only approved signed-in administrators can read/write these tables. The app cannot approve more admins. Public visitors receive only explicitly selected published CMS fields from the read-only `rm_public_site()` function. It never returns customers, jobs, expenses or extra private columns.
 

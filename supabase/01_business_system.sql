@@ -138,6 +138,14 @@ begin
   end if;
 end $$;
 
+-- Existing projects may require a quote and default new jobs to 'Quoted'.
+-- An enquiry can have no quote yet; preserve saved values while aligning the
+-- column defaults with the new app and its allowed status values.
+alter table public.jobs
+  alter column price drop not null,
+  alter column price drop default,
+  alter column status set default 'Enquiry';
+
 -- Copy only missing legacy expense descriptions. Existing notes remain intact.
 do $$ begin
   if exists(select 1 from information_schema.columns where table_schema='public' and table_name='expenses' and column_name='note') then
@@ -155,6 +163,14 @@ create unique index if not exists rm_expenses_request_id on public.expenses(clie
 create index if not exists rm_jobs_customer on public.jobs(customer_id);
 create index if not exists rm_jobs_schedule on public.jobs(scheduled_at);
 create index if not exists rm_expenses_date on public.expenses(expense_date);
+
+-- Preserve and index the existing optional expense-to-job relationship.
+do $$ begin
+  if exists(select 1 from information_schema.columns
+            where table_schema='public' and table_name='expenses' and column_name='job_id') then
+    create index if not exists rm_expenses_job on public.expenses(job_id);
+  end if;
+end $$;
 
 -- NOT VALID preserves unusual historical records. New/edited records must
 -- satisfy these checks; legacy values should be reviewed in the admin app.

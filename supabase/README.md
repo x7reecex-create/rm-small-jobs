@@ -2,6 +2,8 @@
 
 These files upgrade the existing database. They do not replace your Supabase project or create customer records. The website continues to show its current built-in content until you configure the public connection and explicitly publish the CMS content.
 
+The existing RM Small Jobs project completed the database steps on 7 October 2026. See [setup status](setup-status.md) before repeating setup; Auth configuration and owner browser verification remain to be completed.
+
 ## Do this once
 
 1. Open your existing project at [Supabase](https://supabase.com/dashboard). Keep a private database backup before changing the schema. The app's JSON export is useful, but is not a complete database/schema backup.
@@ -29,7 +31,7 @@ These files upgrade the existing database. They do not replace your Supabase pro
 
 New tables use UUID IDs. Existing IDs, records, extra columns and payment fields are preserved. `jobs.customer_id` uses the same type as the existing customer ID. Legacy expense `note` text is copied into a blank description; the original note is retained. Missing expense dates use the record's existing creation date in London time, which may need correcting to the actual purchase date.
 
-New and edited jobs use Enquiry, Quote sent, Booked, In progress, Completed or Cancelled. Historical unfamiliar statuses are retained for review; choose a current status/category before saving changes to those older records. No old quote is automatically treated as a final price or received payment. Expenses use Tools, Materials, Fuel/travel, Advertising, Insurance or Other.
+New and edited jobs use Enquiry, Quote sent, Booked, In progress, Completed or Cancelled. New jobs default to Enquiry, and the quoted price can be empty until a quote is known. The migration removes an older required-price rule/default without changing saved values. Historical unfamiliar statuses are retained for review; choose a current status/category before saving changes to those older records. No old quote is automatically treated as a final price or received payment. Expenses use Tools, Materials, Fuel/travel, Advertising, Insurance or Other. Existing expense-to-job links are preserved and indexed when that legacy column exists.
 
 `client_request_id` is a unique retry identifier for each new job, customer or expense. Retrying the same form can find its original saved record instead of creating another. It does not merge separate records that happen to have the same details.
 

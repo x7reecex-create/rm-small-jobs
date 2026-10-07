@@ -56,7 +56,7 @@ async function main(){
     const c=await browser.newContext({viewport:{width:393,height:852},acceptDownloads:true,timezoneId:options.timezone||'America/New_York'});
     await c.addInitScript(({key,project,options})=>{window.__signedIn=options.signedIn!==false;window.__admin=options.admin!==false;if(options.connection!==false)localStorage.setItem('rm_sb',JSON.stringify({url:project,key}));window.__openCalls=[];window.open=(u)=>{__openCalls.push(u);return null};},{key,project,options});
     await c.route('**/*',async route=>{const u=route.request().url();
-      if(u.includes('/supabase-config.js')&&options.publicConfig)return route.fulfill({contentType:'text/javascript',body:'window.RM_CONFIG='+JSON.stringify({supabaseUrl:project,supabaseKey:options.badKey||key,galleryImageHosts:[]})+';'});
+      if(u.includes('/supabase-config.js'))return route.fulfill({contentType:'text/javascript',body:'window.RM_CONFIG='+JSON.stringify(options.publicConfig?{supabaseUrl:project,supabaseKey:options.badKey||key,galleryImageHosts:[]}:{})+';'});
       if(u.startsWith(base))return route.continue();
       if(u.includes('cdn.jsdelivr.net/npm/@supabase/supabase-js@2'))return route.fulfill({contentType:'text/javascript',body:'('+mockSDK.toString()+')();'});
       if(u===project+'/rest/v1/rpc/rm_public_site'){
