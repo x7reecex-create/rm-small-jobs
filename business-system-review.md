@@ -1,6 +1,6 @@
 # Business-system upgrade review
 
-The database upgrade is installed in the existing Supabase project as of 7 October 2026. The confirmed owner is enrolled and the initial CMS content remains unpublished. The updated application is on PR #1; Auth configuration and owner browser verification remain before deployment. See [setup status](supabase/setup-status.md).
+The database upgrade is installed in the existing Supabase project as of 7 October 2026. The confirmed owner is enrolled and the initial CMS content remains unpublished. The owner authorised publishing the verified application through the existing GitHub Pages route. Auth configuration and owner browser verification remain follow-up checks; they do not change the verified database permissions. See [setup status](supabase/setup-status.md).
 
 ## Result
 

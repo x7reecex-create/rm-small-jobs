@@ -22,16 +22,20 @@ HTTP checks with the configured publishable key passed: `rm_public_site()` retur
 
 The final isolated PostgreSQL 17 suite also passed, including the legacy required-price/default-status regression and repeatable schema/seed checks. All 24 simulated browser scenarios passed after making their connection configuration independent of the real publishable key. JavaScript syntax and whitespace checks passed.
 
-## Remaining before deployment
+## Publication decision
+
+The owner authorised publishing the verified application code with CMS publication off. The live permission checks support this rollout: public signup does not add an account to the business-admin allowlist, and password recovery configuration does not affect password sign-in or private-table permissions. The public website continues to use its built-in content until the owner reviews and publishes the CMS.
+
+## Remaining Auth configuration and owner checks
 
 The connected Supabase tools cannot edit Auth service configuration. The public Auth settings endpoint currently reports **public signup enabled**. In the [project dashboard](https://supabase.com/dashboard/project/metquqdynxwkplojlhwq/auth/url-configuration):
 
 1. Set the Auth site URL to `https://www.rmsmalljobs.co.uk`.
 2. Allow `https://www.rmsmalljobs.co.uk/admin.html` as a recovery redirect.
 3. Disable public signups in Auth settings for this private business app. Signup alone does not grant database access.
-4. Verify the owner's real browser sign-in and password recovery, then deploy PR #1 through the existing GitHub Pages route. Review all CMS content before enabling publication.
+4. Verify the owner's real browser sign-in and password recovery after deployment. Review all CMS content before enabling publication.
 
-No login password was requested or reset, recovery email sent, PR merged or website deployment triggered by this setup.
+The database setup requested no login password, reset no password and sent no recovery email. Website publication proceeds through the existing GitHub Pages route after the owner's instruction to publish the verified code; deployment status is recorded in the PR.
 
 ## Advisor findings reviewed
 

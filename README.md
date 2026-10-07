@@ -30,7 +30,7 @@ The dashboard can export private JSON backups. Keep exports private. They exclud
 
 ## One-time Supabase setup
 
-The existing project was inspected and upgraded on 7 October 2026. The owner is enrolled, the empty CMS was seeded as unpublished drafts, and this PR contains the corrected project URL and an enabled publishable key. Live database permission checks and anonymous HTTP checks passed. See [setup status](supabase/setup-status.md) for evidence and remaining Auth/deployment steps. The instructions below also cover setting up another existing project.
+The existing project was inspected and upgraded on 7 October 2026. The owner is enrolled, the empty CMS was seeded as unpublished drafts, and the public connection file contains the corrected project URL and an enabled publishable key. Live database permission checks and anonymous HTTP checks passed. The owner authorised publishing the verified code with CMS publication off. See [setup status](supabase/setup-status.md) for evidence and remaining Auth/owner checks. The instructions below also cover setting up another existing project.
 
 1. Open your project at [Supabase](https://supabase.com/dashboard) and keep a private database backup.
 2. Open **SQL Editor → New query** and run [00_preflight.sql](supabase/00_preflight.sql). This only inspects the current setup.
