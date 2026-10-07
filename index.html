@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RM Small Jobs | Lanarkshire & Ayrshire</title>
-<meta name="description" content="RM Small Jobs provides straightforward small jobs around the home across Lanarkshire and selected Ayrshire areas, including TV mounting, shelves, wall hanging and furniture assembly.">
+<title>RM Small Jobs | Motherwell, Wishaw & Bellshill</title>
+<meta name="description" content="TV mounting from £45, shelves and furniture assembly from £30, and other small jobs in Motherwell, Wishaw and Bellshill. Request a quote on WhatsApp.">
 <meta name="theme-color" content="#061A2B">
 <link rel="icon" href="favicon.png">
 <meta property="og:title" content="RM Small Jobs">
@@ -13,93 +13,80 @@
 <style>
 :root{--navy:#061A2B;--navy2:#0B2940;--orange:#F46B20;--cream:#F5F2EB;--ink:#14222D;--muted:#66747E;--line:#DDE1E3;--white:#fff;--soft:#EEF1F2}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
 a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
 button,input,textarea{font:inherit}
-img{display:block;max-width:100%}
+img{display:block;max-width:100%;height:auto}
 .wrap{width:min(1120px,calc(100% - 32px));margin:auto}
 
 header{position:sticky;top:0;z-index:30;background:rgba(6,26,43,.97);border-bottom:1px solid #284556;backdrop-filter:blur(10px)}
 .nav{min-height:78px;display:flex;align-items:center;gap:24px}
 .brand{display:flex;align-items:center;gap:14px;min-width:0}
-.brand-logo{width:80px;height:auto;flex:0 0 80px}
+.brand-logo{width:80px;height:auto;flex:0 0 80px;filter:url(#logoCutout)}
 .brand-copy{border-left:1px solid #3A5666;padding-left:14px;color:#fff;font-weight:900;letter-spacing:1.7px;font-size:12px;white-space:nowrap}
 .brand-copy small{display:block;margin-top:3px;color:var(--orange);font-size:7px;letter-spacing:1.3px}
 nav{margin-left:auto;display:flex;align-items:center;gap:21px}
 nav a{font-size:12px;font-weight:800;color:#d8e2e8}
 nav a:hover{color:#fff}
-.nav-cta{background:var(--orange);color:#fff!important;padding:11px 15px;border-radius:8px}
+.nav-cta{background:var(--orange);color:var(--navy)!important;padding:11px 15px;border-radius:8px}
 .menu{display:none;margin-left:auto;background:none;border:1px solid #456071;border-radius:8px;padding:8px;cursor:pointer}
 .menu span{display:block;width:20px;height:2px;background:#fff;margin:4px}
 
-.hero{background:var(--navy);color:#fff;padding:0 0 72px}
+.hero{background:var(--navy);color:#fff;padding:0 0 52px}
 .location{padding:15px 0;border-bottom:1px solid #284556;color:#aebec7;font-size:12px;font-weight:800;letter-spacing:.15px}
-.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;margin-top:42px;align-items:stretch}
-.hero-main{padding:54px 0 36px}
+.hero-main{padding:46px 0 8px;max-width:780px}
 .eyebrow,.kicker{color:var(--orange);font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
-h1{font-size:clamp(49px,6vw,78px);line-height:.95;letter-spacing:-3.6px;margin:15px 0 24px;max-width:740px}
+.kicker{color:#a74611}
+.dark .kicker{color:var(--orange)}
+h1{font-size:clamp(49px,6vw,78px);line-height:1.03;letter-spacing:-3px;margin:15px 0 20px;max-width:740px}
 h1 span{color:var(--orange)}
 .lead{font-size:18px;line-height:1.65;color:#dbe5ea;max-width:660px;margin:0}
-.boundary{font-size:13px;color:#a7bac4;max-width:650px;margin:14px 0 0}
+.boundary{font-size:14px;color:#b7c7cf;max-width:650px;margin:14px 0 0}
 .buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:29px}
-.btn{min-height:48px;padding:0 18px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:900;border:0;cursor:pointer}
-.primary{background:var(--orange);color:#fff}
+.btn{min-height:48px;padding:0 18px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:800;border:0;cursor:pointer}
+.primary{background:var(--orange);color:var(--navy)}
 .secondary{border:1px solid #607582;color:#fff;background:transparent}
 .btn svg{width:17px;height:17px}
+.mobile-quote{display:none}
 
-.hero-panel{background:var(--navy2);border:1px solid #29495b;border-radius:18px;padding:26px;align-self:center;box-shadow:0 22px 55px #0003}
-.panel-label{font-size:10px;color:#8ea5b1;font-weight:900;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:8px}
-.hero-panel h2{font-size:25px;letter-spacing:-1px;margin:0 0 19px}
-.quick-job{display:grid;grid-template-columns:1fr auto;gap:15px;padding:14px 0;border-top:1px solid #29495b;align-items:center}
-.quick-job strong{font-size:14px}
-.quick-job span{font-size:12px;color:var(--orange);font-weight:900;white-space:nowrap}
-.panel-note{font-size:11px;color:#91a6b1;margin:17px 0 0;line-height:1.55}
-
-section{padding:78px 0}
+section{padding:60px 0}
 h2{font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-2px;margin:7px 0 12px}
 .intro{color:var(--muted);max-width:700px;margin:0}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:30px}
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:23px;min-height:202px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:24px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
 .card-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
 .icon{width:42px;height:42px;border-radius:10px;background:var(--navy);color:var(--orange);display:grid;place-items:center;flex:0 0 42px}
 .icon svg{width:21px;height:21px;stroke-width:1.8}
-.price{color:var(--orange);font-weight:900;font-size:12px}
+.price{color:#a74611;font-weight:900;font-size:14px}
 .card h3{margin:18px 0 7px;font-size:18px}
-.card p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
-.small{margin-top:12px;color:#7c888e;font-size:10px}
-.price-note{margin-top:18px;color:#77838a;font-size:11px}
+.card p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.price-note{margin-top:18px;color:#53616a;font-size:13px}
 
 .dark{background:var(--navy);color:#fff}
-.approach-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:68px;align-items:start}
-.approach-copy p{color:#cbd8df;max-width:520px}
-.trust-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #2b485a;border-left:1px solid #2b485a}
-.trust{padding:23px;border-right:1px solid #2b485a;border-bottom:1px solid #2b485a;min-height:154px}
-.trust b{display:block;color:var(--orange);font-size:10px;letter-spacing:1.4px;margin-bottom:10px}
-.trust strong{display:block;font-size:15px;margin-bottom:6px}
-.trust span{color:#9eb1bc;font-size:12px;line-height:1.55}
-
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:30px}
-.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
-.num{color:var(--orange);font-size:10px;font-weight:900;letter-spacing:1.5px}
-.step h3{margin:10px 0 6px}
-.step p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
-
-.area-box{background:#fff;border:1px solid var(--line);border-radius:17px;padding:28px;margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.area-card{border:1px solid var(--line);border-radius:13px;padding:20px;background:#fff}
-.area-card strong{display:block;font-size:18px;margin-bottom:6px}
-.area-card span{color:var(--muted);font-size:13px;line-height:1.6}
-.area-primary{border-color:#f2c3a8;background:#fffaf7}
-.area-primary strong{color:#a74611}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.about-copy p{color:#cbd8df;margin:14px 0 0;max-width:520px}
+.process h3,.coverage h3{margin:0 0 16px;font-size:22px;line-height:1.2}
+.process ol{list-style:none;padding:0;margin:0;display:grid;gap:18px;counter-reset:step}
+.process li{display:grid;grid-template-columns:32px 1fr;gap:12px;counter-increment:step}
+.process li::before{content:counter(step);display:grid;place-items:center;align-self:start;width:32px;height:32px;background:var(--orange);color:var(--navy);border-radius:50%;font-weight:900}
+.process strong{display:block;font-size:16px}
+.process span{display:block;color:#b7c7cf;font-size:14px;margin-top:3px}
+.coverage{display:grid;grid-template-columns:1fr 2fr;gap:24px;margin-top:32px;padding-top:26px;border-top:1px solid #2b485a}
+.coverage h3{margin:0}
+.coverage p{margin:0;color:#cbd8df;font-size:15px}
+.coverage strong{color:white}
 
 .quote-shell{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;background:#fff;border:1px solid var(--line);border-radius:19px;padding:30px}
 .quote-form{display:grid;gap:13px;margin-top:24px}
 .field{display:grid;gap:6px}
-.field label{font-size:10px;font-weight:900;letter-spacing:1.1px;color:#53616a;text-transform:uppercase}
+.field label{font-size:14px;font-weight:800;color:#53616a}
 .field input,.field textarea{width:100%;border:1px solid #cfd6da;border-radius:9px;background:#fff;padding:13px 14px;color:var(--ink);outline:none}
 .field textarea{resize:vertical;min-height:120px}
 .field input:focus,.field textarea:focus{border-color:#8fa1aa;box-shadow:0 0 0 3px #eef1f2}
-.form-note{color:#78868d;font-size:11px;margin:0}
+.form-note{color:#53616a;font-size:14px;margin:0}
+.form-note a,.quote-follow-up p a{text-decoration:underline;color:var(--navy);font-weight:700}
 .quote-follow-up{margin-top:24px;padding:24px;background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:12px;scroll-margin-top:100px}
 .quote-follow-up h3{margin:0 0 10px;font-size:24px;line-height:1.2;letter-spacing:-.5px}
 .quote-follow-up p{font-size:16px;color:#53616a;line-height:1.6}
@@ -107,77 +94,80 @@ h2{font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-2px;margin:7p
 .quote-follow-up .btn{font-size:14px;min-height:48px;text-align:center}
 .quote-follow-up .secondary{color:var(--navy);border-color:#607582}
 .quote-follow-up .primary{color:var(--navy)}
-.quote-follow-up .edit-quote{display:block;margin-top:18px;border:0;padding:0;background:transparent;color:var(--navy);text-decoration:underline;font-size:14px;cursor:pointer}
+.quote-follow-up .edit-quote{display:block;min-height:44px;margin-top:12px;border:0;padding:8px 0;background:transparent;color:var(--navy);text-decoration:underline;font-size:14px;cursor:pointer}
 .quote-follow-up .form-note{font-size:14px;margin-top:16px}
 .quote-follow-up:focus{outline:2px solid var(--orange);outline-offset:4px}
 [hidden]{display:none!important}
 .quote-side{background:var(--soft);border-radius:14px;padding:22px;align-self:start}
-.quote-side h3{margin:0 0 13px;font-size:18px}
-.quote-side ul{padding:0;margin:0;list-style:none;display:grid;gap:10px}
-.quote-side li{display:grid;grid-template-columns:22px 1fr;gap:9px;color:#53616a;font-size:13px}
-.quote-side li b{color:var(--orange)}
-.details{display:grid;gap:9px;margin-top:20px}
+.quote-side h3{margin:0 0 10px;font-size:18px}
+.quote-side p{margin:0;color:#53616a;font-size:14px;line-height:1.6}
+.details{display:grid;gap:9px;margin-top:16px}
 .detail{background:#fff;border:1px solid var(--line);border-radius:9px;padding:12px 14px}
-.detail small{display:block;color:var(--muted);font-size:9px;letter-spacing:1.1px;font-weight:900}
-.detail strong{font-size:13px}
+.detail small{display:block;color:var(--muted);font-size:11px;letter-spacing:1.1px;font-weight:900}
+.detail strong{font-size:15px;overflow-wrap:anywhere}
 .qr-block{display:flex;align-items:center;gap:14px;margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px}
 .qr{width:106px;flex:0 0 106px;border-radius:7px}
 .qr-copy strong{display:block;font-size:13px;margin-bottom:3px}
 .qr-copy span{display:block;color:var(--muted);font-size:11px;line-height:1.5}
-.note{margin-top:18px;border-left:4px solid var(--orange);background:#f7f4ed;padding:13px;color:#5d6970;font-size:11px;line-height:1.55}
-
-footer{background:#041522;color:#fff;padding:40px 0}
+footer{background:#041522;color:#fff;padding:28px 0}
 .footer{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
-.footer-logo{width:105px}
-.muted{color:#9eb0ba;font-size:12px;line-height:1.65}
-
-.floating-wa{display:none;position:fixed;right:16px;bottom:16px;z-index:40;background:var(--orange);color:#fff;border-radius:999px;padding:13px 16px;font-size:12px;font-weight:900;box-shadow:0 10px 30px #0004}
+.footer-logo{width:105px;filter:url(#logoCutout)}
+.muted{color:#b7c7cf;font-size:13px;line-height:1.65}
 
 @media(max-width:860px){
+ .nav{gap:12px}
  nav{display:none}
  nav.open{display:flex;position:absolute;left:16px;right:16px;top:73px;background:var(--navy);padding:10px;flex-direction:column;align-items:stretch;border:1px solid #29485b;border-radius:12px}
- nav.open a{padding:10px}
- .menu{display:block}
- .hero-grid,.approach-grid,.quote-shell{grid-template-columns:1fr}
- .hero-main{padding-bottom:10px}
- .hero-panel{width:100%;margin-top:0}
- .cards,.steps{grid-template-columns:1fr 1fr}
- .footer{grid-template-columns:1fr}
+ nav.open a{display:flex;align-items:center;min-height:44px;padding:10px}
+ .mobile-quote{display:inline-flex;margin-left:auto;font-size:14px;padding:0 14px}
+ .menu{display:block;margin-left:0}
+ .about-grid,.quote-shell{grid-template-columns:1fr}
+ .about-grid{gap:28px}
+ .cards{grid-template-columns:1fr 1fr}
+ .footer{grid-template-columns:1fr 1fr;gap:20px}
+ .footer>div:first-child{grid-column:1/-1}
+ .qr-block{display:none}
 }
 @media(max-width:560px){
  .wrap{width:calc(100% - 28px)}
  .nav{min-height:72px}
  .brand-logo{width:68px;flex-basis:68px}
- .brand-copy{font-size:9px;padding-left:9px}
- .brand-copy small{font-size:6px}
- .hero{padding-bottom:54px}
- .hero-grid{margin-top:26px}
- .hero-main{padding:25px 0 4px}
- h1{font-size:49px;letter-spacing:-2.7px}
+ .brand-copy{display:none}
+ .hero{padding-bottom:36px}
+ .hero-main{padding:30px 0 4px}
+ h1{font-size:clamp(42px,12.5vw,49px);letter-spacing:-2px}
  .lead{font-size:16px}
- section{padding:58px 0}
- .cards,.steps,.area-box,.trust-grid{grid-template-columns:1fr}
- .trust-grid{border-left:0}
- .trust{border-left:1px solid #2b485a}
+ section{padding:40px 0}
+ h2{font-size:32px;letter-spacing:-1px}
+ .cards{grid-template-columns:1fr;gap:10px}
+ .card{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:5px 12px;padding:16px;border-radius:12px}
+ .card-head{display:contents}
+ .card .icon{grid-column:1;grid-row:1/3;width:36px;height:36px}
+ .card .price{grid-column:3;grid-row:1;align-self:center;font-size:13px;white-space:nowrap}
+ .card h3{grid-column:2;grid-row:1;margin:0;align-self:center;font-size:16px;line-height:1.3}
+ .card p{grid-column:2/4;grid-row:2;font-size:14px;line-height:1.5}
+ .coverage{grid-template-columns:1fr;gap:10px;margin-top:26px;padding-top:22px}
  .quote-shell{padding:20px}
- .qr-block{align-items:flex-start}
- .qr{width:92px;flex-basis:92px}
- .floating-wa{display:block}
- body{padding-bottom:66px}
+ .quote-side{padding:18px}
+ .footer-logo{width:80px}
+ .footer .muted{margin-bottom:0}
 }
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"RM Small Jobs","url":"https://www.rmsmalljobs.co.uk/","telephone":"+447365309553","email":"x7reece@gmail.com","areaServed":["Lanarkshire","Ayrshire"],"description":"Straightforward small jobs around the home across Lanarkshire and selected Ayrshire areas."}
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"RM Small Jobs","url":"https://www.rmsmalljobs.co.uk/","telephone":"+447365309553","email":"x7reecex@gmail.com","areaServed":["Motherwell","Wishaw","Bellshill"],"description":"Straightforward small jobs around the home in Motherwell, Wishaw and Bellshill."}
 </script>
 </head>
 <body>
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;pointer-events:none"><defs><filter id="logoCutout" color-interpolation-filters="sRGB"><!-- Preserve the original white/orange artwork; only low-red navy pixels become transparent. --><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  2 0 0 0 -0.2"/></filter></defs></svg>
 <header>
 <div class="wrap nav">
 <a class="brand" href="#top" aria-label="RM Small Jobs home">
-<img class="brand-logo" src="logo.png" alt="RM Small Jobs logo">
+<img class="brand-logo" src="logo.png" width="2190" height="1210" alt="RM Small Jobs logo" decoding="async">
 <div class="brand-copy">RM SMALL JOBS<small>SMALL JOBS. DONE PROPERLY.</small></div>
 </a>
-<button class="menu" id="menu" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
+<a class="btn primary mobile-quote" href="#quote">Get a quote</a>
+<button class="menu" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
 <nav id="nav">
 <a href="#services">Services</a><a href="#how">How it works</a><a href="#areas">Areas</a><a href="#about">About</a><a href="#quote">Get a quote</a>
 <a class="nav-cta" href="https://wa.me/447365309553?text=Hi%2C%20I%27m%20looking%20for%20a%20quote%20from%20RM%20Small%20Jobs.">WhatsApp</a>
@@ -188,138 +178,123 @@ footer{background:#041522;color:#fff;padding:40px 0}
 <main id="top">
 <section class="hero">
 <div class="wrap">
-<div class="location">Lanarkshire · selected Ayrshire areas — send your postcode and I’ll confirm availability</div>
-<div class="hero-grid">
+<div class="location">Motherwell · Wishaw · Bellshill</div>
 <div class="hero-main">
 <div class="eyebrow">RM SMALL JOBS · LOCAL SERVICE</div>
-<h1>Small jobs around the home. <span>Done properly.</span></h1>
-<p class="lead">TV mounting, shelves, wall hanging, furniture assembly and other straightforward jobs across Lanarkshire and selected Ayrshire areas.</p>
-<p class="boundary">I only take on work I’m confident I can complete safely and properly.</p>
+<h1>Small jobs.<br><span>Done properly.</span></h1>
+<p class="lead">Need a TV mounted, shelves fitted or flat-pack furniture built? I can help with the small jobs around your home.</p>
+<p class="boundary">TV mounting from £45 · Other home jobs from £30</p>
 <div class="buttons">
 <a class="btn primary" href="#quote">Get a quote</a>
 <a class="btn secondary" href="#services">See services</a>
 </div>
 </div>
-<aside class="hero-panel" aria-label="Popular services">
-<div class="panel-label">Popular jobs</div>
-<h2>Starting prices</h2>
-<div class="quick-job"><strong>TV mounting</strong><span>From £35</span></div>
-<div class="quick-job"><strong>Shelves & wall hanging</strong><span>From £20</span></div>
-<div class="quick-job"><strong>Furniture assembly</strong><span>From £20</span></div>
-<div class="quick-job"><strong>Small home jobs</strong><span>From £20</span></div>
-<p class="panel-note">Final price is agreed before work starts and can vary with job size, materials, fixings and travel.</p>
-</aside>
-</div>
 </div>
 </section>
 
 <section id="services"><div class="wrap">
-<div class="kicker">Services</div><h2>Useful jobs. Clear scope.</h2>
-<p class="intro">A focused list of straightforward work. If a job needs specialist qualifications, equipment or experience I don’t have, I’ll say so.</p>
+<div class="kicker">Services & starting prices</div><h2>What can I help with?</h2>
 <div class="cards">
-<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg></div><div class="price">From £35</div></div><h3>TV mounting</h3><p>TV and bracket fitting on suitable walls.</p><div class="small">Subject to wall and fixing assessment.</div></div>
-<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M6 6v12M18 6v12M4 18h16"/></svg></div><div class="price">From £20</div></div><h3>Shelves & wall hanging</h3><p>Shelves, mirrors, pictures, hooks and similar straightforward wall jobs.</p></div>
-<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a4 4 0 0 0-5-5L7 4l3 3-6.8 6.8a2.1 2.1 0 0 0 3 3L13 10l3 3 2.7-2.7a4 4 0 0 0-4-4Z"/><path d="m14 14 6 6"/></svg></div><div class="price">From £20</div></div><h3>Furniture assembly</h3><p>Straightforward flat-pack furniture assembly and setup.</p></div>
-<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9M9 20v-6h6v6"/></svg></div><div class="price">From £20</div></div><h3>Small home jobs</h3><p>Simple household jobs within my current ability and equipment.</p><div class="small">Send details first and I’ll confirm.</div></div>
-<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 4c-8 0-14 4-14 10 0 3 2 5 5 5 6 0 9-7 9-15Z"/><path d="M4 21c2-5 6-9 12-12"/></svg></div><div class="price">From £25</div></div><h3>Garden tidy-ups</h3><p>Small-scale weeding, clearing and light maintenance.</p><div class="small">Subject to equipment and job size.</div></div>
-<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m4 6 1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg></div><div class="price">Quote</div></div><h3>Multiple small jobs</h3><p>Send the full list and I’ll confirm what I can take on and price it together.</p></div>
+<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg></div><div class="price">From £45</div></div><h3>TV mounting</h3><p>TV and bracket fitting, with the wall and fixings checked first.</p></div>
+<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M6 6v12M18 6v12M4 18h16"/></svg></div><div class="price">From £30</div></div><h3>Shelves & wall hanging</h3><p>Shelves, mirrors, pictures and hooks.</p></div>
+<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a4 4 0 0 0-5-5L7 4l3 3-6.8 6.8a2.1 2.1 0 0 0 3 3L13 10l3 3 2.7-2.7a4 4 0 0 0-4-4Z"/><path d="m14 14 6 6"/></svg></div><div class="price">From £30</div></div><h3>Furniture assembly</h3><p>Help building and setting up flat-pack furniture.</p></div>
+<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9M9 20v-6h6v6"/></svg></div><div class="price">From £30</div></div><h3>Small home jobs</h3><p>Send me your to-do list and I’ll confirm what I can help with.</p></div>
+<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 4c-8 0-14 4-14 10 0 3 2 5 5 5 6 0 9-7 9-15Z"/><path d="M4 21c2-5 6-9 12-12"/></svg></div><div class="price">From £35</div></div><h3>Light garden tidy-ups</h3><p>Weeding and light clearing. Waste stays in your own bin or agreed bags.</p></div>
+<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m4 6 1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg></div><div class="price">Quote</div></div><h3>A few jobs together?</h3><p>Send the full list for one quote.</p></div>
 </div>
-<p class="price-note">Starting prices are guides, not fixed quotes. Final price depends on the actual job, materials/fixings required and travel.</p>
+<p class="price-note">These are starting prices. I’ll agree a quote with you before work starts, including any materials, fixings or travel.</p>
 </div></section>
 
-<section class="dark" id="about"><div class="wrap approach-grid">
-<div class="approach-copy"><div class="kicker">The RM approach</div><h2>Clear job. Clear price. Tidy finish.</h2><p>RM Small Jobs is built around doing straightforward work properly. The job and price are agreed first, I stay within what I can safely do, and your home is treated with respect.</p></div>
-<div class="trust-grid">
-<div class="trust"><b>01</b><strong>Job agreed first</strong><span>We confirm what’s being done before anything starts.</span></div>
-<div class="trust"><b>02</b><strong>Clear pricing</strong><span>You know the agreed price before the work begins.</span></div>
-<div class="trust"><b>03</b><strong>Within scope</strong><span>I only take on work I’m confident I can complete properly.</span></div>
-<div class="trust"><b>04</b><strong>Tidy finish</strong><span>The work area is treated with care and left tidy.</span></div>
+<section class="dark" id="about"><div class="wrap">
+<div class="about-grid">
+<div class="about-copy"><div class="kicker">Your local small-jobs service</div><h2>Hi, I’m Reece.</h2><p>I run RM Small Jobs around Motherwell, helping with the household jobs you need a hand with.</p><p>I’ll be clear about what I can take on, agree the work with you and treat your home with care.</p></div>
+<div class="process" id="how" aria-labelledby="howTitle"><h3 id="howTitle">How it works</h3><ol>
+<li><div><strong>Tell me about the job</strong><span>Send the details, your postcode or town, and any useful photos.</span></div></li>
+<li><div><strong>Agree the quote</strong><span>I’ll check the job and location, then discuss the price with you.</span></div></li>
+<li><div><strong>Arrange a time</strong><span>Once we’ve agreed the work and price, we’ll arrange a suitable time.</span></div></li>
+</ol></div>
 </div>
-</div></section>
-
-<section id="how"><div class="wrap"><div class="kicker">How it works</div><h2>Simple from first message to finish.</h2>
-<div class="steps">
-<div class="step"><div class="num">01 — SEND THE JOB</div><h3>Tell me what you need</h3><p>Send your postcode or town, a short description and photos if you have them.</p></div>
-<div class="step"><div class="num">02 — AGREE THE PRICE</div><h3>I’ll confirm the job</h3><p>I’ll tell you whether it’s something I can take on and agree the price with you.</p></div>
-<div class="step"><div class="num">03 — GET IT DONE</div><h3>We arrange a time</h3><p>I do the agreed work and leave the area tidy when it’s finished.</p></div>
-</div></div></section>
-
-<section id="areas"><div class="wrap"><div class="kicker">Areas</div><h2>Local coverage without pretending I’m everywhere.</h2>
-<p class="intro">Send your postcode before booking and I’ll confirm whether the location works.</p>
-<div class="area-box">
-<div class="area-card area-primary"><strong>Lanarkshire</strong><span>Main service area for RM Small Jobs.</span></div>
-<div class="area-card"><strong>Selected Ayrshire areas</strong><span>Available depending on location, travel and the job.</span></div>
-</div>
+<div class="coverage" id="areas"><h3>Areas I cover</h3><p><strong>Motherwell, Wishaw and Bellshill.</strong> Nearby? Send your postcode and I’ll check whether the location works for the job.</p></div>
 </div></section>
 
 <section id="quote"><div class="wrap">
 <div class="quote-shell">
 <div>
-<div class="kicker">Get a quote</div><h2>Send me the actual job.</h2>
-<p class="intro">Fill this in and the site will build a WhatsApp message with the details. You can add photos once WhatsApp opens.</p>
-<form class="quote-form" id="quoteForm">
-<div class="field"><label for="qName">Name</label><input id="qName" name="name" autocomplete="name" placeholder="Your name"></div>
+<div class="kicker">Get a quote</div><h2>What needs doing?</h2>
+<p class="intro">Add a few details below, then send the message in WhatsApp. You can add photos there and I’ll reply in the same chat.</p>
+<noscript><p class="form-note">To request a quote, <a href="https://wa.me/447365309553">message on WhatsApp</a> with your postcode or town and what needs doing, or <a href="tel:+447365309553">call 07365 309553</a>. You still need to send the message in WhatsApp.</p></noscript>
+<form class="quote-form" id="quoteForm" hidden>
+<div class="field"><label for="qName">Name (optional)</label><input id="qName" name="name" autocomplete="name" placeholder="Your name"></div>
 <div class="field"><label for="qArea">Postcode or town</label><input id="qArea" name="area" autocomplete="postal-code" placeholder="e.g. ML1 / Motherwell" required></div>
-<div class="field"><label for="qJob">What needs done?</label><textarea id="qJob" name="job" placeholder="Tell me what you need doing, roughly how many items, wall type if known, etc." required></textarea></div>
-<button class="btn primary" type="submit">Open quote in WhatsApp</button>
-<p class="form-note">Nothing is submitted to this website. The details are only used to create your WhatsApp message.</p>
+<div class="field"><label for="qJob">What needs doing?</label><textarea id="qJob" name="job" placeholder="e.g. Fit two shelves. I have the shelves but need fixings. Wall type unknown." required></textarea></div>
+<button class="btn primary" type="submit">Open request in WhatsApp</button>
+<p class="form-note">Your details create a WhatsApp draft. Tap Send in WhatsApp to make your enquiry.</p>
 </form>
 <div class="quote-follow-up" id="quoteFollowUp" hidden tabindex="-1" aria-labelledby="quoteFollowUpTitle">
-<h3 id="quoteFollowUpTitle">Finish your request in WhatsApp</h3>
-<p>Tap <strong>Send</strong> in WhatsApp, then return to this page. You can add photos to help me price the job.</p>
+<h3 id="quoteFollowUpTitle">Send your message in WhatsApp</h3>
+<p>Your message is ready. Tap <strong>Send</strong> in WhatsApp to make your enquiry. You can add photos in the chat.</p>
+<p id="whatsAppHelp">If WhatsApp didn’t open, try the button below. If it still doesn’t work, call <a href="tel:+447365309553">07365 309553</a>.</p>
 <div class="buttons">
-<a class="btn secondary" id="reopenWhatsApp" href="https://wa.me/447365309553" target="_blank" rel="noopener noreferrer">Open WhatsApp again</a>
-<button class="btn primary" id="confirmQuoteSent" type="button">I’ve sent my request</button>
+<a class="btn primary" id="reopenWhatsApp" href="https://wa.me/447365309553" target="_blank" rel="noopener noreferrer">Open WhatsApp / retry</a>
+<a class="btn secondary" href="thank-you/">What happens next?</a>
 </div>
-<p class="form-note">Only confirm once you’ve sent your message. If WhatsApp didn’t open, use the button above.</p>
+<p class="form-note">This website can’t confirm that your message was sent or received. An enquiry isn’t a booking, and no payment is taken here. If you’ve already sent it, continue in the same chat.</p>
 <button class="edit-quote" id="editQuote" type="button">Edit job details</button>
 </div>
 </div>
 <aside class="quote-side">
-<h3>What helps me price it</h3>
-<ul>
-<li><b>01</b><span>Your postcode or town</span></li>
-<li><b>02</b><span>A clear description of the job</span></li>
-<li><b>03</b><span>Photos of the area or item where possible</span></li>
-<li><b>04</b><span>Any brackets, shelves or fixings you already have</span></li>
-</ul>
+<h3>Prefer to call or email?</h3>
+<p>Use the details below. Photos and a note of any brackets or fixings you already have will help me quote.</p>
 <div class="details">
 <a class="detail" href="tel:+447365309553"><small>PHONE</small><strong>07365 309553</strong></a>
-<a class="detail" href="mailto:x7reece@gmail.com"><small>EMAIL</small><strong>x7reece@gmail.com</strong></a>
-<div class="detail"><small>FACEBOOK</small><strong>RM Small Jobs</strong></div>
+<a class="detail" href="mailto:x7reecex@gmail.com"><small>EMAIL</small><strong>x7reecex@gmail.com</strong></a>
 </div>
 <a class="qr-block" href="https://wa.me/447365309553?text=Hi%2C%20I%27m%20looking%20for%20a%20quote%20from%20RM%20Small%20Jobs." aria-label="Open RM Small Jobs on WhatsApp">
-<img class="qr" src="whatsapp-qr.png" alt="QR code for RM Small Jobs WhatsApp">
+<img class="qr" src="whatsapp-qr.png" width="396" height="396" alt="QR code for RM Small Jobs WhatsApp" loading="lazy" decoding="async">
 <div class="qr-copy"><strong>Scan to WhatsApp</strong><span>Open a chat with RM Small Jobs on your phone.</span></div>
 </a>
-<div class="note">Starting prices are not guaranteed fixed prices. Final price is confirmed after the job has been described or reviewed.</div>
 </aside>
 </div>
 </div></section>
 </main>
 
 <footer><div class="wrap footer">
-<div><img class="footer-logo" src="logo.png" alt="RM Small Jobs logo"><p class="muted">RM Small Jobs · Small jobs. Done properly.</p></div>
-<div><strong>Areas</strong><p class="muted">Lanarkshire<br>Selected Ayrshire areas</p></div>
-<div><strong>Contact</strong><p class="muted">07365 309553<br>x7reece@gmail.com<br>RM Small Jobs</p></div>
+<div><img class="footer-logo" src="logo.png" width="2190" height="1210" alt="RM Small Jobs logo" loading="lazy" decoding="async"><p class="muted">RM Small Jobs · Small jobs. Done properly.</p></div>
+<div><strong>Areas</strong><p class="muted">Motherwell · Wishaw · Bellshill<br>Other locations by agreement</p></div>
+<div><strong>Contact</strong><p class="muted"><a href="tel:+447365309553">07365 309553</a><br><a href="mailto:x7reecex@gmail.com">x7reecex@gmail.com</a></p></div>
 </div></footer>
-
-<a class="floating-wa" href="https://wa.me/447365309553?text=Hi%2C%20I%27m%20looking%20for%20a%20quote%20from%20RM%20Small%20Jobs.">WhatsApp quote</a>
 
 <script>
 const menu=document.getElementById('menu'),nav=document.getElementById('nav');
-menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',open)});
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+function setMenuOpen(open){
+  nav.classList.toggle('open',open);
+  menu.setAttribute('aria-expanded',String(open));
+  menu.setAttribute('aria-label',open ? 'Close menu' : 'Open menu');
+}
+menu.addEventListener('click',()=>setMenuOpen(!nav.classList.contains('open')));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenuOpen(false)));
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape' && nav.classList.contains('open')){
+    setMenuOpen(false);
+    menu.focus();
+  }
+});
 
 const quoteForm=document.getElementById('quoteForm');
 const quoteFollowUp=document.getElementById('quoteFollowUp');
 const reopenWhatsApp=document.getElementById('reopenWhatsApp');
 
 function startWhatsAppQuote(url){
-  reopenWhatsApp.href=url;
-  quoteForm.hidden=true;
-  quoteFollowUp.hidden=false;
-  window.open(url,'_blank','noopener,noreferrer');
+  if(quoteFollowUp.hidden){
+    reopenWhatsApp.href=url;
+    quoteForm.hidden=true;
+    quoteFollowUp.hidden=false;
+    try{
+      window.open(url,'_blank','noopener,noreferrer');
+    }catch{
+      document.getElementById('whatsAppHelp').textContent='WhatsApp couldn’t open. Try the button below, or call 07365 309553 using the phone link on this page.';
+    }
+  }
   quoteFollowUp.scrollIntoView({block:'center'});
   quoteFollowUp.focus({preventScroll:true});
 }
@@ -331,10 +306,6 @@ document.querySelectorAll('a[href^="https://wa.me/"]').forEach(link=>{
     e.preventDefault();
     startWhatsAppQuote(link.href);
   });
-});
-
-document.getElementById('confirmQuoteSent').addEventListener('click',()=>{
-  window.location.assign(new URL('thank-you/',window.location.href).href);
 });
 
 document.getElementById('editQuote').addEventListener('click',()=>{
@@ -366,6 +337,8 @@ quoteForm.addEventListener('submit',e=>{
   ].filter(Boolean);
   startWhatsAppQuote('https://wa.me/447365309553?text='+encodeURIComponent(lines.join('\n')));
 });
+// Only expose the form after its handler is ready, so it never falls back to a GET request.
+quoteForm.hidden=false;
 </script>
 </body>
 </html>

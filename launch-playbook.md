@@ -158,5 +158,5 @@ Track only these numbers:
 - 1–3 paid jobs
 - Ask every happy customer for a review and permission to use before/after photos
 
-## Current website fixes needed before wider promotion
-The live GitHub Pages site still contains older prices and broader Lanarkshire/Ayrshire wording. Update it to the current prices/coverage before using the website heavily in ads. Also verify the contact email shown on the page is the intended business email.
+## Website alignment before wider promotion
+The website source now uses the current starting prices and Motherwell/Wishaw/Bellshill coverage above. Use x7reecex@gmail.com for the business contact email, confirmed by Reece on 7 October 2026. Check that the matching GitHub Pages deployment has succeeded and the corrected details appear on the live site before using it in ads. The enquiry route is WhatsApp: a customer must press Send there, and the website cannot verify receipt.
