@@ -53,6 +53,7 @@ nav a:hover{color:#fff}
 h1{font-size:clamp(49px,6vw,78px);line-height:1.03;letter-spacing:-3px;margin:15px 0 20px;max-width:740px}
 h1 span{color:var(--orange)}
 .lead{font-size:18px;line-height:1.65;color:#dbe5ea;max-width:660px;margin:0}
+.launch-offer{margin-top:18px;max-width:650px;padding:12px 16px;border-left:3px solid var(--orange);background:#0b2940;border-radius:0 8px 8px 0;font-size:15px}.launch-offer strong{color:#fff}.launch-offer small{display:block;color:#bfced6;margin-top:4px;font-size:13px}
 .boundary{font-size:14px;color:#b7c7cf;max-width:650px;margin:14px 0 0}
 .buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:29px}
 .btn{min-height:48px;padding:0 18px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:800;border:0;cursor:pointer}
@@ -197,6 +198,7 @@ footer{background:#041522;color:#fff;padding:28px 0}
 <h1 id="cmsHeadline">Small jobs.<br><span>Done properly.</span></h1>
 <p class="lead" id="cmsIntro">Need a TV mounted, shelves fitted or flat-pack furniture built? I can help with the small jobs around your home.</p>
 <p class="boundary" id="cmsBoundary">TV mounting from £45 · Other home jobs from £30</p>
+<div class="launch-offer"><strong>Launch offer: £10 off your first job over £40</strong><small>For the first 5 customers, reserved when your booking is confirmed. Ask me to confirm availability and the final price when you enquire.</small></div>
 <div class="buttons">
 <a class="btn primary" href="#quote">Get a quote</a>
 <a class="btn secondary" href="#services">See services</a>
@@ -238,7 +240,7 @@ footer{background:#041522;color:#fff;padding:28px 0}
 <div class="quote-shell">
 <div>
 <div class="kicker">Get a quote</div><h2>What needs doing?</h2>
-<p class="intro">Add a few details below, then send the message in WhatsApp. You can add photos there and I’ll reply in the same chat.</p>
+<p class="intro">Send your postcode, job details and a couple of photos in WhatsApp. I’ll check the scope, agree the price and arrange a time with you.</p>
 <noscript><p class="form-note">To request a quote, <a href="https://wa.me/447365309553">message on WhatsApp</a> with your postcode or town and what needs doing, or <a href="tel:+447365309553">call 07365 309553</a>. You still need to send the message in WhatsApp.</p></noscript>
 <form class="quote-form" id="quoteForm" hidden>
 <div class="service-hint" id="quoteServiceHint" role="status" hidden><span id="quoteServiceName"></span><button type="button" id="clearQuoteService">Clear service choice</button></div>
@@ -370,7 +372,8 @@ quoteForm.addEventListener('submit',e=>{
     `Postcode / town: ${area}`,
     `Job: ${job}`,
     '',
-    'I can send photos here as well.'
+    'I can send photos here as well.',
+    'Could you confirm whether the £10 launch offer applies to my first job?'
   ].filter(Boolean);
   startWhatsAppQuote('https://wa.me/'+(window.rmPublicContact?.whatsapp||'447365309553')+'?text='+encodeURIComponent(lines.join('\n')));
 });
