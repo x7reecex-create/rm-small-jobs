@@ -52,6 +52,7 @@ async function enterSession(nextSession){
   if(epoch!==authEpoch||!session)return;
   if(!status?.is_admin)return accessScreen('Admin access is not enabled','You are signed in, but this account has not been added as the business owner. Follow the owner access step in the setup instructions.');
   if(status.schema_version!==1)return accessScreen('Database update is needed','Run the current database setup before using these forms. Existing records have not been changed.');
+  if(new URLSearchParams(location.search).get('change-password')==='1')return showPasswordReset();
   adminReady=true;shell();await home();
 }
 function accessScreen(title,message){adminReady=false;viewVersion++;authCard(`<h1>${esc(title)}</h1>${err(message)}<p class="muted">Your records have not been loaded.</p><div class="actions"><button class="btn primary" onclick="start()">Try again</button><button class="btn secondary" onclick="logout()">Log out</button><a class="btn secondary" href="README.md">Setup instructions</a><button class="btn secondary" onclick="downloadPublicConfig()">Download public connection file</button></div>`);}
@@ -78,7 +79,7 @@ async function start(){
     const params=new URLSearchParams(location.hash.replace(/^#/,''));const search=new URLSearchParams(location.search);
     const recoveryError=params.get('error_description')||search.get('error_description');
     if(recoveryError){history.replaceState(null,'',location.pathname);return login('The sign-in or reset link could not be used: '+recoveryError);}
-    if(recovery)return;if(!session)return login();await enterSession(session);
+    if(recovery)return;if(!session)return login(search.get('change-password')==='1'?'This browser has no active sign-in. Open your newest password reset email link in this browser, or sign in first.':'');await enterSession(session);
   }catch(e){clearPrivate();setup(e.message);}
 }
 function shell(){requireAuth();app.innerHTML=`<header><div class="head"><div class="brand"><img class="logo" src="logo.png" alt="RM Small Jobs logo"><div><b>RM Small Jobs</b><small>Private business app</small></div></div><button class="btn secondary" onclick="logout()">Log out</button></div></header><nav class="nav" aria-label="Business app">${[['home','Home'],['jobs','Jobs'],['customers','Customers'],['money','Money'],['tools','More']].map(([id,name])=>`<button id="n-${id}" onclick="go('${id}')">${name}</button>`).join('')}</nav><main id="main"></main>`;}
