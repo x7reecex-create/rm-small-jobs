@@ -6,3 +6,8 @@ __pycache__/
 rm-small-jobs-private-backup-*.json
 playwright-report/
 test-results/
+
+# BEGIN CODEX ACTIVITY LOG: managed
+# Sanitized local outbox: keep pending logs on this clone until synced.
+/.codex/activity-log/
+# END CODEX ACTIVITY LOG: managed

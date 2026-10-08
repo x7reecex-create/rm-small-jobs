@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "project_name": "RM Small Jobs",
+  "project_value": "RM Small Jobs",
+  "database_url": "https://www.notion.so/bd9b6ca278da4024a66459090a150b19",
+  "data_source_id": "b59593fc-4fb8-4957-af51-892c116028b4",
+  "view_url": "view://b1869200-c70a-451b-9624-aed24389bc50",
+  "title_property": "Task",
+  "project_property": "Project",
+  "transport": "notion-connector"
+}
