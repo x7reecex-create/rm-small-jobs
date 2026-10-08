@@ -34,3 +34,11 @@ Existing phone and WhatsApp destinations were preserved and checked for consiste
 Review `index.html`, `thank-you/index.html` and the screenshots. The owner authorised publication of the reviewed changes, including the logo background mask. Publish to `main` through the existing GitHub Pages route, verify the matching deployment and recheck the live homepage, mobile journey and `/thank-you/`. Actual sending and receipt require a separately authorised real-device enquiry.
 
 Local evidence is saved separately in `/workspace/rm-small-jobs-review/`, including the original checks and the final `optimised-checks.json`, `optimisation-metrics.json`, `optimised-mobile-home.png`, `optimised-mobile-first-screen.png`, `optimised-mobile-next-steps.png` and `optimised-desktop.png`. No private handover details were added to the repository.
+
+## Service-to-quote improvement — 8 October 2026
+
+Service cards now link directly to the quote form and carry the selected service into the prepared WhatsApp message. Switching services retains the customer's entered details and opens the editable form again without opening WhatsApp automatically. A clear action removes the service choice. This works for both built-in services and published CMS services. Keyboard activation focuses the postcode or job field; the existing compact cards, logo, prices and QR remain in place.
+
+Added the site's canonical URL and sharing metadata using the original logo, confirmed service areas and starting prices. Sharing platforms may cache earlier previews; metadata does not guarantee a platform immediately refreshes its card. No customer data, enquiry delivery or bookings are recorded by this change.
+
+Verification: 30 simulated browser scenarios passed, including keyboard service selection, draft contents, switching/clearing without losing details, published CMS service links, and layouts at 320/393/768/1440 pixels. WhatsApp opening was intercepted; no enquiry was sent. JavaScript syntax and whitespace checks passed.

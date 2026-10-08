@@ -8,7 +8,7 @@ The project keeps the existing branding, mobile layout, prices, logo, QR and Git
 
 ## The customer website
 
-`index.html` contains the working website and built-in fallback content. The quote form prepares a WhatsApp message: the customer must press **Send in WhatsApp**. The website cannot confirm delivery, accept a booking or take payment. `thank-you/index.html` explains the next steps.
+`index.html` contains the working website and built-in fallback content. Selecting a service card carries that service into the quote form while retaining entered details. The quote form prepares a WhatsApp message: the customer must press **Send in WhatsApp**. The website cannot confirm delivery, accept a booking or take payment. `thank-you/index.html` explains the next steps.
 
 Once configured, `public-cms.js` reads the published homepage, contact details, services/prices, FAQs, areas and gallery from Supabase. Content edits appear on the customer's next page load without another GitHub deployment. Missing configuration, connection failures and invalid responses retain the built-in website. Successfully loaded empty collections keep disabled items hidden.
 

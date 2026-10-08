@@ -7,11 +7,19 @@
 <meta name="description" content="TV mounting from £45, shelves and furniture assembly from £30, and other small jobs in Motherwell, Wishaw and Bellshill. Request a quote on WhatsApp.">
 <meta name="theme-color" content="#061A2B">
 <link rel="icon" href="favicon.png">
+<link rel="canonical" href="https://www.rmsmalljobs.co.uk/">
 <script defer src="supabase-config.js"></script>
 <script defer src="public-cms.js"></script>
 <meta property="og:title" content="RM Small Jobs">
-<meta property="og:description" content="Small jobs around the home. Done properly.">
+<meta property="og:description" content="TV mounting from £45, shelves and furniture assembly from £30. Motherwell, Wishaw & Bellshill.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://www.rmsmalljobs.co.uk/">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://www.rmsmalljobs.co.uk/logo.png">
+<meta property="og:image:width" content="2190">
+<meta property="og:image:height" content="1210">
+<meta property="og:image:alt" content="RM Small Jobs logo">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 :root{--navy:#061A2B;--navy2:#0B2940;--orange:#F46B20;--cream:#F5F2EB;--ink:#14222D;--muted:#66747E;--line:#DDE1E3;--white:#fff;--soft:#EEF1F2}
 *{box-sizing:border-box}
@@ -58,6 +66,7 @@ h2{font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-2px;margin:7p
 .intro{color:var(--muted);max-width:700px;margin:0}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:24px}
 .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+.service-quote{transition:border-color .15s,background-color .15s}.service-quote:hover{border-color:#a74611;background:#fffcf8}.service-quote h3::after{content:" →";color:#a74611}.service-hint{margin:0;padding:12px 14px;border-radius:9px;background:var(--soft);font-size:14px;color:var(--ink)}.service-hint button{display:block;margin-top:5px;border:0;background:none;padding:0;color:#a74611;text-decoration:underline;cursor:pointer;min-height:44px}
 .card-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
 .icon{width:42px;height:42px;border-radius:10px;background:var(--navy);color:var(--orange);display:grid;place-items:center;flex:0 0 42px}
 .icon svg{width:21px;height:21px;stroke-width:1.8}
@@ -156,7 +165,7 @@ footer{background:#041522;color:#fff;padding:28px 0}
  .footer-logo{width:80px}
  .footer .muted{margin-bottom:0}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.service-quote{transition:none}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"RM Small Jobs","url":"https://www.rmsmalljobs.co.uk/","telephone":"+447365309553","email":"x7reecex@gmail.com","areaServed":["Motherwell","Wishaw","Bellshill"],"description":"Straightforward small jobs around the home in Motherwell, Wishaw and Bellshill."}
@@ -198,13 +207,14 @@ footer{background:#041522;color:#fff;padding:28px 0}
 
 <section id="services"><div class="wrap">
 <div class="kicker">Services & starting prices</div><h2>What can I help with?</h2>
+<p class="intro">Pick a service to start your quote.</p>
 <div class="cards" id="cmsServices">
-<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg></div><div class="price">From £45</div></div><h3>TV mounting</h3><p>TV and bracket fitting, with the wall and fixings checked first.</p></div>
-<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M6 6v12M18 6v12M4 18h16"/></svg></div><div class="price">From £30</div></div><h3>Shelves & wall hanging</h3><p>Shelves, mirrors, pictures and hooks.</p></div>
-<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a4 4 0 0 0-5-5L7 4l3 3-6.8 6.8a2.1 2.1 0 0 0 3 3L13 10l3 3 2.7-2.7a4 4 0 0 0-4-4Z"/><path d="m14 14 6 6"/></svg></div><div class="price">From £30</div></div><h3>Furniture assembly</h3><p>Help building and setting up flat-pack furniture.</p></div>
-<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9M9 20v-6h6v6"/></svg></div><div class="price">From £30</div></div><h3>Small home jobs</h3><p>Send me your to-do list and I’ll confirm what I can help with.</p></div>
-<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 4c-8 0-14 4-14 10 0 3 2 5 5 5 6 0 9-7 9-15Z"/><path d="M4 21c2-5 6-9 12-12"/></svg></div><div class="price">From £35</div></div><h3>Light garden tidy-ups</h3><p>Weeding and light clearing. Waste stays in your own bin or agreed bags.</p></div>
-<div class="card"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m4 6 1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg></div><div class="price">Quote</div></div><h3>A few jobs together?</h3><p>Send the full list for one quote.</p></div>
+<a class="card service-quote" href="#quote" data-service="TV mounting"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg></div><div class="price">From £45</div></div><h3>TV mounting</h3><p>TV and bracket fitting, with the wall and fixings checked first.</p></a>
+<a class="card service-quote" href="#quote" data-service="Shelves &amp; wall hanging"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M6 6v12M18 6v12M4 18h16"/></svg></div><div class="price">From £30</div></div><h3>Shelves & wall hanging</h3><p>Shelves, mirrors, pictures and hooks.</p></a>
+<a class="card service-quote" href="#quote" data-service="Furniture assembly"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.7 6.3a4 4 0 0 0-5-5L7 4l3 3-6.8 6.8a2.1 2.1 0 0 0 3 3L13 10l3 3 2.7-2.7a4 4 0 0 0-4-4Z"/><path d="m14 14 6 6"/></svg></div><div class="price">From £30</div></div><h3>Furniture assembly</h3><p>Help building and setting up flat-pack furniture.</p></a>
+<a class="card service-quote" href="#quote" data-service="Small home jobs"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9M9 20v-6h6v6"/></svg></div><div class="price">From £30</div></div><h3>Small home jobs</h3><p>Send me your to-do list and I’ll confirm what I can help with.</p></a>
+<a class="card service-quote" href="#quote" data-service="Light garden tidy-ups"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 4c-8 0-14 4-14 10 0 3 2 5 5 5 6 0 9-7 9-15Z"/><path d="M4 21c2-5 6-9 12-12"/></svg></div><div class="price">From £35</div></div><h3>Light garden tidy-ups</h3><p>Weeding and light clearing. Waste stays in your own bin or agreed bags.</p></a>
+<a class="card service-quote" href="#quote" data-service="A few jobs together?"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m4 6 1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg></div><div class="price">Quote</div></div><h3>A few jobs together?</h3><p>Send the full list for one quote.</p></a>
 </div>
 <p class="price-note" id="cmsPriceNote">These are starting prices. I’ll agree a quote with you before work starts, including any materials, fixings or travel.</p>
 </div></section>
@@ -231,6 +241,7 @@ footer{background:#041522;color:#fff;padding:28px 0}
 <p class="intro">Add a few details below, then send the message in WhatsApp. You can add photos there and I’ll reply in the same chat.</p>
 <noscript><p class="form-note">To request a quote, <a href="https://wa.me/447365309553">message on WhatsApp</a> with your postcode or town and what needs doing, or <a href="tel:+447365309553">call 07365 309553</a>. You still need to send the message in WhatsApp.</p></noscript>
 <form class="quote-form" id="quoteForm" hidden>
+<div class="service-hint" id="quoteServiceHint" role="status" hidden><span id="quoteServiceName"></span><button type="button" id="clearQuoteService">Clear service choice</button></div>
 <div class="field"><label for="qName">Name (optional)</label><input id="qName" name="name" autocomplete="name" placeholder="Your name"></div>
 <div class="field"><label for="qArea">Postcode or town</label><input id="qArea" name="area" autocomplete="postal-code" placeholder="e.g. ML1 / Motherwell" required></div>
 <div class="field"><label for="qJob">What needs doing?</label><textarea id="qJob" name="job" placeholder="e.g. Fit two shelves. I have the shelves but need fixings. Wall type unknown." required></textarea></div>
@@ -287,6 +298,7 @@ document.addEventListener('keydown',e=>{
   }
 });
 
+let selectedQuoteService='';
 const quoteForm=document.getElementById('quoteForm');
 const quoteFollowUp=document.getElementById('quoteFollowUp');
 const reopenWhatsApp=document.getElementById('reopenWhatsApp');
@@ -321,6 +333,23 @@ document.getElementById('editQuote').addEventListener('click',()=>{
   document.getElementById('qName').focus();
 });
 
+document.getElementById('cmsServices').addEventListener('click',e=>{
+  const card=e.target.closest('a[data-service]');
+  if(!card||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+  e.preventDefault();
+  selectedQuoteService=card.dataset.service;
+  document.getElementById('quoteServiceName').textContent='Quote for '+selectedQuoteService+'. Add the job details below.';
+  document.getElementById('quoteServiceHint').hidden=false;
+  quoteFollowUp.hidden=true;
+  quoteForm.hidden=false;
+  document.getElementById('quote').scrollIntoView({block:'start'});
+  document.getElementById(document.getElementById('qArea').value.trim()?'qJob':'qArea').focus({preventScroll:true});
+});
+document.getElementById('clearQuoteService').addEventListener('click',()=>{
+  selectedQuoteService='';document.getElementById('quoteServiceHint').hidden=true;
+  document.getElementById('qJob').focus();
+});
+
 ['qArea','qJob'].forEach(id=>document.getElementById(id).addEventListener('input',e=>e.target.setCustomValidity('')));
 
 quoteForm.addEventListener('submit',e=>{
@@ -337,6 +366,7 @@ quoteForm.addEventListener('submit',e=>{
     'Hi, I’m looking for a quote from RM Small Jobs.',
     '',
     name ? `Name: ${name}` : null,
+    selectedQuoteService ? `Service: ${selectedQuoteService}` : null,
     `Postcode / town: ${area}`,
     `Job: ${job}`,
     '',

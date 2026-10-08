@@ -134,7 +134,9 @@
     const icons = new Map(originalCards.map(card => [card.querySelector('h3')?.textContent.toLowerCase(), card.querySelector('.icon')]));
     const fragment = document.createDocumentFragment();
     for (const row of rows) {
-      const card = element('div', null, 'card');
+      const card = element('a', null, 'card service-quote');
+      card.href = '#quote';
+      card.dataset.service = row.name || 'Small job';
       const head = element('div', null, 'card-head');
       const originalIcon = icons.get((row.name || '').toLowerCase()) || originalCards.at(-1)?.querySelector('.icon');
       if (originalIcon) head.append(originalIcon.cloneNode(true));
