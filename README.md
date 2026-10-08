@@ -22,11 +22,19 @@ Sign in with your existing Supabase account. The database must also approve that
 - **Jobs:** create/edit customer-linked jobs, descriptions, addresses, dates/times, quoted/final prices and status. Cancellation keeps history. Permanent deletion requires confirmation.
 - **Customers:** names, phones, emails, addresses/postcodes and notes, current/previous jobs and Call/WhatsApp/Email actions.
 - **Money:** create/edit/delete expenses with category, description and date. Revenue uses completed jobs' final prices; unknown final prices are flagged and excluded. Estimated profit is that revenue minus entered expenses, before tax and any costs not recorded. It does not prove payment was received.
-- **More:** the existing quote calculator, WhatsApp reply drafts and checklist, plus website editing and public connection-file download.
+- **More:** the existing quote calculator, WhatsApp reply drafts and checklist, plus website editing, password changes and public connection-file download.
 
 Job times use Scotland time (**Europe/London**) regardless of the device timezone. Clock-change times that disappear or occur twice must be changed to an unambiguous time. New-record retry references prevent a connection failure/retry from creating another copy. Separate forms remain separate records.
 
 The dashboard can export private JSON backups. Keep exports private. They exclude connection keys/tokens and do not provide automatic restoration.
+
+## Password recovery
+
+Use **Forgot password?** on the sign-in screen and open the newest email link in the same browser. After the link opens, choose and save your new password. Reusing a reset link may show an expired/invalid-link error.
+
+If a valid owner session remains in that browser, [Set a new password](https://www.rmsmalljobs.co.uk/admin.html?change-password=1) or **More → Change password** lets you save a password without another email. A signed-out browser still needs sign-in or a valid reset link.
+
+“Email reset limit exceeded” is Supabase's email quota, not a wrong password. The built-in mail provider allows two Auth emails per hour across the project. Check the newest message and spam folder before retrying; production email delivery needs custom SMTP or a sending hook. See [Supabase rate limits](https://supabase.com/docs/guides/auth/rate-limits).
 
 ## One-time Supabase setup
 
@@ -57,7 +65,7 @@ Isolated database tests do not prove which rules are installed in the live proje
 
 ## Deploying updates
 
-GitHub Pages publishes `main` from the repository root. Keep `CNAME` as `www.rmsmalljobs.co.uk`. No build step is needed. Update HTML/JavaScript files together, wait for **pages build and deployment** to succeed, then refresh the site. Keep the previous version available for rollback.
+GitHub Pages publishes `main` from the repository root. Keep `CNAME` as `www.rmsmalljobs.co.uk`. No build step is needed. The admin page pins Supabase JS to `2.117.3`; review and test updates before changing that version. Update HTML/JavaScript files together, wait for **pages build and deployment** to succeed, then refresh the site. Keep the previous version available for rollback.
 
 Complete the database migration and owner enrolment before deploying the upgraded admin app. Until setup is complete, it shows a setup-required screen rather than loading private records without verified permissions. Normal content/customer/job/expense edits go to Supabase and do not require GitHub commits. Never put customer records, private exports, passwords or elevated keys in this repository.
 

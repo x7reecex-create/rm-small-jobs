@@ -2,7 +2,7 @@
 
 These files upgrade the existing database. They do not replace your Supabase project or create customer records. The website continues to show its current built-in content until you configure the public connection and explicitly publish the CMS content.
 
-The existing RM Small Jobs project completed the database steps on 7 October 2026. See [setup status](setup-status.md) before repeating setup; Auth configuration and owner browser verification remain to be completed.
+The existing RM Small Jobs project completed the database steps on 7 October 2026. See [setup status](setup-status.md) before repeating setup; deployment and disabled public signup are verified; owner password recovery and real-device checks remain.
 
 ## Do this once
 

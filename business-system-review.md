@@ -1,6 +1,6 @@
 # Business-system upgrade review
 
-The database upgrade is installed in the existing Supabase project as of 7 October 2026. The confirmed owner is enrolled and the initial CMS content remains unpublished. The owner authorised publishing the verified application through the existing GitHub Pages route. Auth configuration and owner browser verification remain follow-up checks; they do not change the verified database permissions. See [setup status](supabase/setup-status.md).
+The database upgrade is installed in the existing Supabase project as of 7 October 2026. The confirmed owner is enrolled and the initial CMS content remains unpublished. The owner authorised publishing the verified application through the existing GitHub Pages route. Owner password recovery and physical-device verification remain follow-up checks; they do not change the verified database permissions. See [setup status](supabase/setup-status.md).
 
 ## Result
 
@@ -16,7 +16,7 @@ The database upgrade is installed in the existing Supabase project as of 7 Octob
 
 `python3 supabase/tests/test_database.py` passed against isolated PostgreSQL 17: fresh/repeated migration, owner CRUD, anonymous and unapproved-user denial, allowlist protection, publication filtering, exclusion of private extra columns, retry uniqueness and constraints. It also checked legacy bigint IDs/records/payment fields, expense notes/London dates, removal of old permissive policies and column grants, and complete rollback on incompatible schemas.
 
-`node tests/business-system.cjs` passed 24 browser scenarios using clearly identified simulated records. It covered dashboard and published CMS layouts at 320/393/768/1440 pixels; customers/contact links/history; job creation/edit/completion/cancel/delete; expenses/errors/idempotent retry; money arithmetic; every CMS collection and global publication; unavailable/malformed/empty fallback handling; WhatsApp/QR/next steps; export; sign-in/logout/recovery; approved-account gating; rejected secret keys; and London summer/winter/DST scheduling. No browser script errors occurred.
+`node tests/business-system.cjs` passed 28 browser scenarios using clearly identified simulated records. It covered dashboard and published CMS layouts at 320/393/768/1440 pixels; customers/contact links/history; job creation/edit/completion/cancel/delete; expenses/errors/idempotent retry; money arithmetic; every CMS collection and global publication; unavailable/malformed/empty fallback handling; WhatsApp/QR/next steps; export; sign-in/logout/recovery; approved-account gating; rejected secret keys; and London summer/winter/DST scheduling. No browser script errors occurred.
 
 The browser SDK/RPCs were intercepted. No live database request, fake customer record, message or payment was sent. Screenshots/results are outside source control under `/tmp/rm-small-jobs-browser-checks`. Chromium checks are not a physical iPhone/Safari test.
 
@@ -24,7 +24,7 @@ JavaScript syntax, whitespace checks and preservation checks for the original lo
 
 ## Live blocker and activation order
 
-The existing live schema, policies, grants, public functions/views, app triggers and storage buckets were inspected. The transactional setup and owner enrolment are complete. An enabled publishable key is configured on the PR branch, with the project URL typo corrected in both connection defaults. Live owner CRUD and anonymous/unapproved-user denial passed; test writes were rolled back. Anonymous HTTP checks passed with the configured key. Live owner browser sign-in, email recovery and deployment remain unverified.
+The existing live schema, policies, grants, public functions/views, app triggers and storage buckets were inspected. The transactional setup and owner enrolment are complete. An enabled publishable key is configured on the deployed main branch, with the project URL typo corrected in both connection defaults. Live owner CRUD and anonymous/unapproved-user denial passed; test writes were rolled back. Anonymous HTTP checks passed with the configured key. GitHub Pages deployment and deployed asset checks passed. The owner password change, fresh password sign-in and physical-device workflows remain unverified.
 
 1. Keep a private database backup and run the read-only preflight.
 2. Run the transactional migration, resolve any compatibility errors without deleting data, then enrol the actual owner UID.
@@ -35,4 +35,8 @@ The existing live schema, policies, grants, public functions/views, app triggers
 
 Unrelated legacy functions, views, storage buckets and integrations may expose data independently; review them using the preflight results. The live system must not be described as secured/audited until these actual settings are checked.
 
-Recommended next task: complete live Supabase activation and its end-to-end verification before adding further features. Payment-received tracking is a useful later addition; quotes/final prices do not substitute for recorded receipts.
+Recommended next task: complete the owner password change and physical-device verification before adding further features. Payment-received tracking is a useful later addition; quotes/final prices do not substitute for recorded receipts.
+
+## 8 October follow-up
+
+Pinned the Supabase browser SDK to `2.117.3`; the versioned CDN response was byte-identical to the moving `@2` response at verification time. Dependency upgrades must now be reviewed and tested deliberately. Updated setup notes to record the completed deployment, disabled public signup, password-recovery route and remaining owner checks. No database changes or additional features were introduced in this follow-up.
