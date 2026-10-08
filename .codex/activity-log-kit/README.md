@@ -1,8 +1,8 @@
 # Codex activity logging kit
 
-This kit installs the same automatic in-session Notion logging workflow into a repository. It uses the existing Notion connector. It contains no API credential and does not run a background service.
+This kit installs the same active-session Notion logging workflow into a repository. It uses the existing Notion connector when that connector is available to the active assistant. It contains no API credential and does not run a background service.
 
-After installation, Codex reads the repository AGENTS.md, stages a sanitized local activity entry, queries the existing Codex Activity Log by a stable task identifier, creates or updates one record, reads it back, and marks it saved only after verification. Pending records remain in the repository's ignored `.codex/activity-log/` directory.
+After installation, Codex is instructed to read the repository AGENTS.md, stage a sanitized local activity entry, query the existing Codex Activity Log by a stable task identifier, create or update one record, read it back, and mark it saved only after verification. This depends on an active compatible session following the repository instructions and having authorised Notion access; it is not an unattended sync guarantee. Pending records remain in the repository's ignored `.codex/activity-log/` directory.
 
 Run `node install.cjs --repo /absolute/path/to/repository --project "Project name" --project-value Other` for a future repository. For RM Small Jobs, use `--project-value "RM Small Jobs"`. Existing instruction text and ignore rules are preserved. Read the installed `.codex/activity-log-workflow.md` for exact commands and connector operations.
 
