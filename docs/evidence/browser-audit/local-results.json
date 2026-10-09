@@ -1,0 +1,949 @@
+{
+  "checked_at": "2026-10-09T14:33:40.435Z",
+  "mode": "local code with real anonymous CMS reads",
+  "base": "http://127.0.0.1:37793",
+  "network_transport": "TLS verified through existing session proxy via Playwright route.fetch; browser trust settings unchanged",
+  "checks": [
+    {
+      "name": "Homepage loads with RM Small Jobs title and one main heading",
+      "passed": true,
+      "detail": {
+        "cms": {
+          "status": "fallback",
+          "reason": "not-published"
+        }
+      }
+    },
+    {
+      "name": "/ layout 320×568: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/ layout 375×667: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/ layout 393×852: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/ layout 430×932: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/ layout 768×1024: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/ layout 1440×900: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/ layout 852×393: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/ same-site links and hash targets resolve",
+      "passed": true,
+      "detail": {
+        "links": 25
+      }
+    },
+    {
+      "name": "/thank-you/ layout 320×568: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/thank-you/ layout 375×667: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/thank-you/ layout 393×852: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/thank-you/ layout 430×932: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/thank-you/ layout 768×1024: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/thank-you/ layout 1440×900: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/thank-you/ layout 852×393: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/thank-you/ same-site links and hash targets resolve",
+      "passed": true,
+      "detail": {
+        "links": 4
+      }
+    },
+    {
+      "name": "/admin.html layout 320×568: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/admin.html layout 375×667: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/admin.html layout 393×852: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/admin.html layout 430×932: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/admin.html layout 768×1024: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/admin.html layout 1440×900: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/admin.html layout 852×393: no horizontal overflow or broken visible images",
+      "passed": true
+    },
+    {
+      "name": "/admin.html same-site links and hash targets resolve",
+      "passed": true,
+      "detail": {
+        "links": 1
+      }
+    },
+    {
+      "name": "Signed-out admin shows sign-in/setup and no private record content",
+      "passed": true,
+      "detail": {
+        "heading": "Sign in",
+        "authentication": "No login attempted"
+      }
+    },
+    {
+      "name": "Mobile menu opens, Escape closes and restores focus",
+      "passed": true
+    },
+    {
+      "name": "Mobile navigation: Services",
+      "passed": true
+    },
+    {
+      "name": "Mobile navigation: How it works",
+      "passed": true
+    },
+    {
+      "name": "Mobile navigation: Areas",
+      "passed": true
+    },
+    {
+      "name": "Mobile navigation: About",
+      "passed": true
+    },
+    {
+      "name": "Mobile navigation: Get a quote",
+      "passed": true
+    },
+    {
+      "name": "Mobile landscape menu: final WhatsApp link reachable",
+      "passed": true
+    },
+    {
+      "name": "Mobile menu dismisses outside and resets after desktop resize",
+      "passed": true
+    },
+    {
+      "name": "Hero/header/home hash links navigate to existing sections",
+      "passed": true
+    },
+    {
+      "name": "Every public WhatsApp anchor creates a retryable handoff without sending",
+      "passed": true
+    },
+    {
+      "name": "Every phone/email anchor has a consistent handler destination",
+      "passed": true,
+      "detail": {
+        "verification": "Click destinations captured; carrier/email delivery not attempted"
+      }
+    },
+    {
+      "name": "Service selection with keyboard: TV mounting",
+      "passed": true
+    },
+    {
+      "name": "Service selection with keyboard: Shelves & wall hanging",
+      "passed": true
+    },
+    {
+      "name": "Service selection with keyboard: Furniture assembly",
+      "passed": true
+    },
+    {
+      "name": "Service selection with keyboard: Small home jobs",
+      "passed": true
+    },
+    {
+      "name": "Service selection with keyboard: Light garden tidy-ups",
+      "passed": true
+    },
+    {
+      "name": "Service selection with keyboard: A few jobs together?",
+      "passed": true
+    },
+    {
+      "name": "Clear service choice hides hint and focuses job details",
+      "passed": true
+    },
+    {
+      "name": "Enquiry required fields reject whitespace without opening WhatsApp",
+      "passed": true
+    },
+    {
+      "name": "Enquiry opens one correctly addressed/encoded WhatsApp draft and explains manual send",
+      "passed": true,
+      "detail": {
+        "delivery": "Simulated browser handoff only; no WhatsApp message or database insert attempted"
+      }
+    },
+    {
+      "name": "Retry retains identical WhatsApp draft; edit preserves typed fields",
+      "passed": true
+    },
+    {
+      "name": "Form reload draft retention (observation)",
+      "passed": true,
+      "detail": {
+        "retained": false,
+        "requirement": "Observation; draft retention is not currently a stated feature"
+      }
+    },
+    {
+      "name": "Customer inputs have sensible length bounds and iPhone-safe font sizing",
+      "passed": true
+    },
+    {
+      "name": "WhatsApp open exception still provides visible retry and contact route",
+      "passed": true
+    },
+    {
+      "name": "Simulated published CMS updates visible services and SEO without stale fallback prices",
+      "passed": true
+    },
+    {
+      "name": "Simulated long published CMS text remains usable at 320/375/393 pixels",
+      "passed": true
+    },
+    {
+      "name": "JavaScript disabled home: visible contact route and no visible nonfunctional enquiry form",
+      "passed": true
+    },
+    {
+      "name": "JavaScript disabled next: visible contact route and no visible nonfunctional enquiry form",
+      "passed": true
+    },
+    {
+      "name": "Next steps never claims enquiry was delivered for success=true URL",
+      "passed": true
+    },
+    {
+      "name": "Phone/email/WhatsApp contacts are consistent across customer pages",
+      "passed": true,
+      "detail": {
+        "telephoneRoutes": 1,
+        "emailRoutes": 1,
+        "whatsappRoutes": 1
+      }
+    },
+    {
+      "name": "Homepage resource/loading observations",
+      "passed": true,
+      "detail": {
+        "navigation": [
+          {
+            "domContentLoaded": 68,
+            "load": 71,
+            "transferBytes": 28958
+          }
+        ],
+        "resources": [
+          {
+            "path": "/supabase-config.js",
+            "durationMs": 20,
+            "transferBytes": 766
+          },
+          {
+            "path": "/public-cms.js",
+            "durationMs": 24,
+            "transferBytes": 13427
+          },
+          {
+            "path": "/logo-160.webp",
+            "durationMs": 26,
+            "transferBytes": 8852
+          },
+          {
+            "path": "/rest/v1/rpc/rm_public_site",
+            "durationMs": 260,
+            "transferBytes": 0
+          },
+          {
+            "path": "/favicon-32.png",
+            "durationMs": 7,
+            "transferBytes": 1562
+          },
+          {
+            "path": "/whatsapp-qr.png",
+            "durationMs": 6,
+            "transferBytes": 849
+          }
+        ]
+      }
+    },
+    {
+      "name": "No uncaught JavaScript errors, failed requests or HTTP errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "failures": [],
+  "responses": [],
+  "requests": [
+    {
+      "path": "/",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "document"
+    },
+    {
+      "path": "/supabase-config.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/public-cms.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/logo-160.webp",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "image"
+    },
+    {
+      "path": "/rest/v1/rpc/rm_public_site",
+      "host": "metquqdynxwkplojlhwq.supabase.co",
+      "method": "POST",
+      "resource": "fetch"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "document"
+    },
+    {
+      "path": "/supabase-config.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/public-cms.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/logo-160.webp",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "image"
+    },
+    {
+      "path": "/rest/v1/rpc/rm_public_site",
+      "host": "metquqdynxwkplojlhwq.supabase.co",
+      "method": "POST",
+      "resource": "fetch"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/whatsapp-qr.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "image"
+    },
+    {
+      "path": "/thank-you/",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "document"
+    },
+    {
+      "path": "/supabase-config.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/public-cms.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/logo-160.webp",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "image"
+    },
+    {
+      "path": "/rest/v1/rpc/rm_public_site",
+      "host": "metquqdynxwkplojlhwq.supabase.co",
+      "method": "POST",
+      "resource": "fetch"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/admin.html",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "document"
+    },
+    {
+      "path": "/npm/@supabase/supabase-js@2.117.3",
+      "host": "cdn.jsdelivr.net",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/supabase-config.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/admin.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/admin-business.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/admin-tools.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/admin-leads.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/logo-160.webp",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "image"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/whatsapp-qr.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "image"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "document"
+    },
+    {
+      "path": "/supabase-config.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/public-cms.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/logo-160.webp",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "image"
+    },
+    {
+      "path": "/rest/v1/rpc/rm_public_site",
+      "host": "metquqdynxwkplojlhwq.supabase.co",
+      "method": "POST",
+      "resource": "fetch"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/whatsapp-qr.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "image"
+    },
+    {
+      "path": "/",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "document"
+    },
+    {
+      "path": "/supabase-config.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/public-cms.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/logo-160.webp",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "image"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "document"
+    },
+    {
+      "path": "/supabase-config.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/public-cms.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/logo-160.webp",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "image"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "document"
+    },
+    {
+      "path": "/logo-160.webp",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "image"
+    },
+    {
+      "path": "/whatsapp-qr.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "image"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/thank-you/",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "document"
+    },
+    {
+      "path": "/logo-160.webp",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "image"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    },
+    {
+      "path": "/thank-you/",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "document"
+    },
+    {
+      "path": "/supabase-config.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/public-cms.js",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "script"
+    },
+    {
+      "path": "/logo-160.webp",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "image"
+    },
+    {
+      "path": "/rest/v1/rpc/rm_public_site",
+      "host": "metquqdynxwkplojlhwq.supabase.co",
+      "method": "POST",
+      "resource": "fetch"
+    },
+    {
+      "path": "/favicon-32.png",
+      "host": "127.0.0.1",
+      "method": "GET",
+      "resource": "other"
+    }
+  ],
+  "links": [
+    {
+      "page": "/",
+      "text": "Skip to content",
+      "href": "http://127.0.0.1:37793/#top",
+      "raw": "#top"
+    },
+    {
+      "page": "/",
+      "text": "RM SMALL JOBS\nSMALL JOBS. DONE PROPERLY.",
+      "href": "http://127.0.0.1:37793/#top",
+      "raw": "#top"
+    },
+    {
+      "page": "/",
+      "text": "Get a quote",
+      "href": "http://127.0.0.1:37793/#quote",
+      "raw": "#quote"
+    },
+    {
+      "page": "/",
+      "text": "Services",
+      "href": "http://127.0.0.1:37793/#services",
+      "raw": "#services"
+    },
+    {
+      "page": "/",
+      "text": "How it works",
+      "href": "http://127.0.0.1:37793/#how",
+      "raw": "#how"
+    },
+    {
+      "page": "/",
+      "text": "Areas",
+      "href": "http://127.0.0.1:37793/#areas",
+      "raw": "#areas"
+    },
+    {
+      "page": "/",
+      "text": "About",
+      "href": "http://127.0.0.1:37793/#about",
+      "raw": "#about"
+    },
+    {
+      "page": "/",
+      "text": "Get a quote",
+      "href": "http://127.0.0.1:37793/#quote",
+      "raw": "#quote"
+    },
+    {
+      "page": "/",
+      "text": "WhatsApp",
+      "href": "https://wa.me/447365309553?text=Hi%2C%20I%27m%20looking%20for%20a%20quote%20from%20RM%20Small%20Jobs.",
+      "raw": "https://wa.me/447365309553?text=Hi%2C%20I%27m%20looking%20for%20a%20quote%20from%20RM%20Small%20Jobs."
+    },
+    {
+      "page": "/",
+      "text": "Get a quote",
+      "href": "http://127.0.0.1:37793/#quote",
+      "raw": "#quote"
+    },
+    {
+      "page": "/",
+      "text": "See services",
+      "href": "http://127.0.0.1:37793/#services",
+      "raw": "#services"
+    },
+    {
+      "page": "/",
+      "text": "From £45\nTV mounting\n\nTV and bracket fitting, with the wall and fixings checked first.",
+      "href": "http://127.0.0.1:37793/#quote",
+      "raw": "#quote"
+    },
+    {
+      "page": "/",
+      "text": "From £30\nShelves & wall hanging\n\nShelves, mirrors, pictures and hooks.",
+      "href": "http://127.0.0.1:37793/#quote",
+      "raw": "#quote"
+    },
+    {
+      "page": "/",
+      "text": "From £30\nFurniture assembly\n\nHelp building and setting up flat-pack furniture.",
+      "href": "http://127.0.0.1:37793/#quote",
+      "raw": "#quote"
+    },
+    {
+      "page": "/",
+      "text": "From £30\nSmall home jobs\n\nSend me your to-do list and I’ll confirm what I can help with.",
+      "href": "http://127.0.0.1:37793/#quote",
+      "raw": "#quote"
+    },
+    {
+      "page": "/",
+      "text": "From £35\nLight garden tidy-ups\n\nWeeding and light clearing. Waste stays in your own bin or agreed bags.",
+      "href": "http://127.0.0.1:37793/#quote",
+      "raw": "#quote"
+    },
+    {
+      "page": "/",
+      "text": "Quote\nA few jobs together?\n\nSend the full list for one quote.",
+      "href": "http://127.0.0.1:37793/#quote",
+      "raw": "#quote"
+    },
+    {
+      "page": "/",
+      "text": "07365 309553",
+      "href": "tel:+447365309553",
+      "raw": "tel:+447365309553"
+    },
+    {
+      "page": "/",
+      "text": "Open WhatsApp / retry",
+      "href": "https://wa.me/447365309553",
+      "raw": "https://wa.me/447365309553"
+    },
+    {
+      "page": "/",
+      "text": "What happens next?",
+      "href": "http://127.0.0.1:37793/thank-you/",
+      "raw": "thank-you/"
+    },
+    {
+      "page": "/",
+      "text": "PHONE\n07365 309553",
+      "href": "tel:+447365309553",
+      "raw": "tel:+447365309553"
+    },
+    {
+      "page": "/",
+      "text": "EMAIL\nx7reecex@gmail.com",
+      "href": "mailto:x7reecex@gmail.com",
+      "raw": "mailto:x7reecex@gmail.com"
+    },
+    {
+      "page": "/",
+      "text": "Scan or tap to WhatsApp\nOpen a chat with RM Small Jobs.",
+      "href": "https://wa.me/447365309553?text=Hi%2C%20I%27m%20looking%20for%20a%20quote%20from%20RM%20Small%20Jobs.",
+      "raw": "https://wa.me/447365309553?text=Hi%2C%20I%27m%20looking%20for%20a%20quote%20from%20RM%20Small%20Jobs."
+    },
+    {
+      "page": "/",
+      "text": "07365 309553",
+      "href": "tel:+447365309553",
+      "raw": "tel:+447365309553"
+    },
+    {
+      "page": "/",
+      "text": "x7reecex@gmail.com",
+      "href": "mailto:x7reecex@gmail.com",
+      "raw": "mailto:x7reecex@gmail.com"
+    },
+    {
+      "page": "/thank-you/",
+      "text": "RM SMALL JOBS",
+      "href": "http://127.0.0.1:37793/",
+      "raw": "../"
+    },
+    {
+      "page": "/thank-you/",
+      "text": "Back to website",
+      "href": "http://127.0.0.1:37793/",
+      "raw": "../"
+    },
+    {
+      "page": "/thank-you/",
+      "text": "Message on WhatsApp",
+      "href": "https://wa.me/447365309553",
+      "raw": "https://wa.me/447365309553"
+    },
+    {
+      "page": "/thank-you/",
+      "text": "07365 309553",
+      "href": "tel:+447365309553",
+      "raw": "tel:+447365309553"
+    },
+    {
+      "page": "/admin.html",
+      "text": "Back to public website",
+      "href": "http://127.0.0.1:37793/",
+      "raw": "./"
+    }
+  ],
+  "metrics": [
+    {
+      "navigation": [
+        {
+          "domContentLoaded": 68,
+          "load": 71,
+          "transferBytes": 28958
+        }
+      ],
+      "resources": [
+        {
+          "path": "/supabase-config.js",
+          "durationMs": 20,
+          "transferBytes": 766
+        },
+        {
+          "path": "/public-cms.js",
+          "durationMs": 24,
+          "transferBytes": 13427
+        },
+        {
+          "path": "/logo-160.webp",
+          "durationMs": 26,
+          "transferBytes": 8852
+        },
+        {
+          "path": "/rest/v1/rpc/rm_public_site",
+          "durationMs": 260,
+          "transferBytes": 0
+        },
+        {
+          "path": "/favicon-32.png",
+          "durationMs": 7,
+          "transferBytes": 1562
+        },
+        {
+          "path": "/whatsapp-qr.png",
+          "durationMs": 6,
+          "transferBytes": 849
+        }
+      ]
+    }
+  ],
+  "mutation_requests": 0
+}

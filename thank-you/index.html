@@ -2,13 +2,20 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Your quote request — next steps | RM Small Jobs</title>
 <meta name="description" content="Send your message in WhatsApp to request a quote from RM Small Jobs. Find out what happens next and how to get in touch.">
 <meta name="robots" content="noindex,follow">
 <meta name="theme-color" content="#061A2B">
 <link rel="canonical" href="https://www.rmsmalljobs.co.uk/thank-you/">
-<link rel="icon" href="../favicon.png">
+<meta name="application-name" content="RM Small Jobs">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="RM Small Jobs">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../icons/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
 <script defer src="../supabase-config.js"></script>
 <script defer src="../public-cms.js"></script>
 <style>
@@ -16,12 +23,12 @@
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
 a{color:inherit}
-header{background:var(--navy);border-bottom:1px solid #284556}
+header{background:var(--navy);border-bottom:1px solid #284556;padding-top:env(safe-area-inset-top);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
 .wrap{width:min(1120px,calc(100% - 32px));margin:auto}
 .brand{display:inline-flex;align-items:center;gap:16px;min-height:82px;max-width:100%;padding:14px 0;text-decoration:none}
 .brand img{width:80px;height:auto;display:block;flex:0 0 auto;filter:url(#logoCutout)}
 .brand span{min-width:0;border-left:1px solid #3A5666;padding-left:16px;color:white;font-size:.875rem;font-weight:900;letter-spacing:1.2px}
-main{flex:1;display:grid;place-items:center;padding:48px 16px}
+main{flex:1;display:grid;place-items:center;padding:48px max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
 .receipt{width:min(100%,640px);padding:40px;background:white;border:1px solid var(--line);border-top:5px solid var(--orange);border-radius:16px;box-shadow:0 16px 40px #061a2b0a}
 .status-icon{width:56px;height:56px;display:grid;place-items:center;background:#fff1e8;color:#a5410c;border-radius:50%;margin-bottom:22px}
 .status-icon svg{width:28px;height:28px}
@@ -38,13 +45,13 @@ h2{margin:0 0 12px;font-size:1.25rem;line-height:1.3}
 a:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
 .contact{margin:22px 0 0;font-size:.875rem;color:var(--muted)}
 .contact a{color:var(--navy);font-weight:700;white-space:nowrap}
-footer{background:#041522;color:#afc0ca;padding:22px 16px;text-align:center;font-size:.875rem}
-@media(max-width:560px){main{padding:28px 14px}.receipt{padding:28px 22px}.actions{flex-direction:column}.btn{width:100%}.brand{gap:12px}.brand img{width:68px}.brand span{padding-left:12px}}
+footer{background:#041522;color:#afc0ca;padding:22px max(16px,env(safe-area-inset-right)) calc(22px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));text-align:center;font-size:.875rem}
+@media(max-width:560px){main{padding:28px max(14px,env(safe-area-inset-right)) 28px max(14px,env(safe-area-inset-left))}.receipt{padding:28px 22px}.actions{flex-direction:column}.btn{width:100%}.brand{gap:12px}.brand img{width:68px}.brand span{padding-left:12px}}
 </style>
 </head>
 <body>
 <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;pointer-events:none"><defs><filter id="logoCutout" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  2 0 0 0 -0.2"/></filter></defs></svg>
-<header><div class="wrap"><a class="brand" href="../" aria-label="RM Small Jobs home"><img src="../logo.png" width="2190" height="1210" alt="" decoding="async"><span>RM SMALL JOBS</span></a></div></header>
+<header><div class="wrap"><a class="brand" href="../" aria-label="RM Small Jobs home"><img src="../logo-320.webp" srcset="../logo-160.webp 160w, ../logo-320.webp 320w" sizes="(max-width:560px) 68px, 80px" width="320" height="177" alt="" decoding="async"><span>RM SMALL JOBS</span></a></div></header>
 <main>
 <article class="receipt" aria-labelledby="thankYouTitle">
 <div class="status-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-1 1V11.5a9 9 0 0 1 18 0Z"/><path d="M8 10h8M8 14h5"/></svg></div>
