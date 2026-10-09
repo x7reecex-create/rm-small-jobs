@@ -26,7 +26,13 @@ Sign in with your existing Supabase account. The database must also approve that
 
 Job times use Scotland time (**Europe/London**) regardless of the device timezone. Clock-change times that disappear or occur twice must be changed to an unambiguous time. New-record retry references prevent a connection failure/retry from creating another copy. Separate forms remain separate records.
 
-The dashboard can export private JSON backups. Keep exports private. They exclude connection keys/tokens and do not provide automatic restoration.
+The dashboard can export private JSON backups, including the lead tracker. Keep exports private. They exclude connection keys/tokens and do not provide automatic restoration. The lead-tracker setup (`supabase/04_lead_tracker.sql`) must be installed for the complete export; a read failure stops the export rather than silently omitting records.
+
+## Production audit — 9 October 2026
+
+See [the audit and change log](docs/production-audit.md) for checked journeys, actual results, changed files and owner actions. Browser simulations and live read-only permission checks are explicitly separated from owner login and record persistence, which remain unverified.
+
+The public website and private business app now have separate home-screen manifests and correctly sized icons. Add the public homepage or `admin.html` through your browser's **Add to Home Screen** action. The private app still requires approved sign-in. There is no offline cache; opening the website/app and using Supabase requires a connection. Actual iPhone installation, standalone launch and WhatsApp delivery require a real-device check after deployment.
 
 ## Password recovery
 

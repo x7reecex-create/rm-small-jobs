@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /admin.html
-Disallow: /thank-you/
 
 Sitemap: https://www.rmsmalljobs.co.uk/sitemap.xml

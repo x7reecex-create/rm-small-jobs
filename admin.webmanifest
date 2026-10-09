@@ -1,0 +1,17 @@
+{
+  "id": "./admin.html",
+  "name": "RM Small Jobs Business",
+  "short_name": "RM Business",
+  "description": "Private business app for RM Small Jobs.",
+  "lang": "en-GB",
+  "start_url": "./admin.html",
+  "scope": "./admin.html",
+  "display": "standalone",
+  "background_color": "#F5F2EB",
+  "theme_color": "#061A2B",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

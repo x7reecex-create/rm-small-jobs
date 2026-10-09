@@ -216,6 +216,19 @@
     services(data.services);
     faqs(data.faqs);
     gallery(data.gallery, settings.imageHosts);
+    // Published services and areas can change without an HTML deployment.
+    // Avoid retaining the built-in prices in search/sharing descriptions.
+    const serviceNames = data.services.map(row => row.name?.trim()).filter(Boolean).slice(0, 3);
+    const coverage = names.length ? ' in ' + names.slice(0, 3).join(', ') : '';
+    const description = serviceNames.length
+      ? serviceNames.join(', ') + coverage + '. Ask RM Small Jobs for a quote.'
+      : 'Small jobs around your home' + coverage + '. Ask RM Small Jobs about availability.';
+    if (document.getElementById('cmsHeadline')) {
+      document.title = 'Handyman' + coverage + ' | RM Small Jobs';
+      document.querySelector('meta[name="description"]')?.setAttribute('content', description);
+      document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+      document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title);
+    }
     const structured = document.querySelector('script[type="application/ld+json"]');
     if (structured) {
       try {
