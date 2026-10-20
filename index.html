@@ -130,6 +130,10 @@ h2{font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-2px;margin:7p
 .detail small{display:block;color:var(--muted);font-size:11px;letter-spacing:1.1px;font-weight:900}
 .detail strong{font-size:15px;overflow-wrap:anywhere}
 .qr-block{display:flex;align-items:center;gap:14px;margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px}
+.instagram-badge{display:inline-flex;align-items:center;gap:10px;min-height:48px;margin-top:14px;padding:11px 14px;background:#fff;color:var(--navy);border:1px solid var(--line);border-radius:10px;font-size:14px;font-weight:800;transition:border-color .15s,background-color .15s}
+.instagram-badge svg{width:20px;height:20px;flex:0 0 20px;fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.instagram-badge:hover{border-color:var(--orange);background:#fffcf8}
+.instagram-badge:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
 .qr{width:132px;flex:0 0 132px;image-rendering:pixelated}
 .qr-copy strong{display:block;font-size:14px;margin-bottom:3px}
 .qr-copy span{display:block;color:var(--muted);font-size:13px;line-height:1.5}
@@ -282,6 +286,7 @@ footer{background:#041522;color:#fff;padding:28px 0 calc(28px + env(safe-area-in
 <a class="detail" href="tel:+447365309553"><small>PHONE</small><strong>07365 309553</strong></a>
 <a class="detail" href="mailto:x7reecex@gmail.com"><small>EMAIL</small><strong>x7reecex@gmail.com</strong></a>
 </div>
+<a class="instagram-badge" href="https://www.instagram.com/rmsmalljobs/" target="_blank" rel="noopener noreferrer" aria-label="Visit RM Small Jobs on Instagram, @rmsmalljobs"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"/></svg><span>Instagram · @rmsmalljobs</span></a>
 <a class="qr-block" href="https://wa.me/447365309553?text=Hi%2C%20I%27m%20looking%20for%20a%20quote%20from%20RM%20Small%20Jobs." aria-label="Open RM Small Jobs on WhatsApp">
 <img class="qr" src="whatsapp-qr.png" width="396" height="396" alt="QR code for RM Small Jobs WhatsApp" loading="lazy" decoding="async">
 <div class="qr-copy"><strong>Scan or tap to WhatsApp</strong><span>Open a chat with RM Small Jobs.</span></div>
@@ -294,7 +299,7 @@ footer{background:#041522;color:#fff;padding:28px 0 calc(28px + env(safe-area-in
 <footer><div class="wrap footer">
 <div><img class="footer-logo" src="logo-320.webp" srcset="logo-160.webp 160w, logo-320.webp 320w" sizes="(max-width:560px) 80px, 105px" width="320" height="177" alt="RM Small Jobs logo" loading="lazy" decoding="async"><p class="muted">RM Small Jobs · Small jobs. Done properly.</p></div>
 <div><strong>Areas</strong><p class="muted"><span id="cmsFooterAreas">Motherwell · Wishaw · Bellshill</span><br>Other locations by agreement</p></div>
-<div><strong>Contact</strong><p class="muted"><a href="tel:+447365309553">07365 309553</a><br><a href="mailto:x7reecex@gmail.com">x7reecex@gmail.com</a></p></div>
+<div><strong>Contact</strong><p class="muted"><a href="tel:+447365309553">07365 309553</a><br><a href="mailto:x7reecex@gmail.com">x7reecex@gmail.com</a><br><a href="https://www.instagram.com/rmsmalljobs/" target="_blank" rel="noopener noreferrer" aria-label="Visit RM Small Jobs on Instagram, @rmsmalljobs">Instagram @rmsmalljobs ↗</a></p></div>
 </div></footer>
 
 <script>
