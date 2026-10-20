@@ -87,6 +87,8 @@ h2{font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-2px;margin:7p
 .service-hint{overflow-wrap:anywhere;min-width:0}.quote-shell>*,.quote-form>*{min-width:0}
 .cms-faqs{display:grid;gap:12px;margin-top:24px}.cms-faqs details{background:white;border:1px solid var(--line);border-radius:12px;padding:0 18px}.cms-faqs summary{padding:16px 0;min-height:48px;font-weight:800;cursor:pointer}.cms-faqs p{margin:0 0 18px;color:var(--muted);white-space:pre-line}.cms-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:18px;margin-top:24px}.cms-gallery figure{margin:0;background:white;border:1px solid var(--line);border-radius:12px;overflow:hidden}.cms-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover}.cms-gallery figcaption{padding:16px}.cms-gallery figcaption p{margin:6px 0 0;color:var(--muted);font-size:14px}.cms-copy{white-space:pre-line;overflow-wrap:anywhere}
 .price-note{margin-top:18px;color:#53616a;font-size:13px}
+.service-actions{margin-top:20px}
+.service-actions .secondary{color:var(--navy);border-color:#607582}
 
 .dark{background:var(--navy);color:#fff}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
@@ -200,7 +202,7 @@ footer{background:#041522;color:#fff;padding:28px 0 calc(28px + env(safe-area-in
 <a class="btn primary mobile-quote" href="#quote">Get a quote</a>
 <button class="menu" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
 <nav id="nav">
-<a href="#services">Services</a><a href="#how">How it works</a><a href="#areas">Areas</a><a href="#about">About</a><a href="#quote">Get a quote</a>
+<a href="#services">Services</a><a href="#how">How it works</a><a href="#about">About</a><a href="#areas">Areas</a><a href="#quote">Get a quote</a>
 <a class="nav-cta" href="https://wa.me/447365309553?text=Hi%2C%20I%27m%20looking%20for%20a%20quote%20from%20RM%20Small%20Jobs.">WhatsApp</a>
 </nav>
 </div>
@@ -236,16 +238,17 @@ footer{background:#041522;color:#fff;padding:28px 0 calc(28px + env(safe-area-in
 <a class="card service-quote" href="#quote" data-service="A few jobs together?"><div class="card-head"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m4 6 1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg></div><div class="price">Quote</div></div><h3>A few jobs together?</h3><p>Send the full list for one quote.</p></a>
 </div>
 <p class="price-note" id="cmsPriceNote">These are starting prices. I’ll agree a quote with you before work starts, including any materials, fixings or travel.</p>
+<div class="buttons service-actions"><a class="btn primary" href="https://wa.me/447365309553?text=Hi%2C%20I%27m%20looking%20for%20a%20quote%20from%20RM%20Small%20Jobs.">Ask on WhatsApp</a><a class="btn secondary" href="#quote">Use the quote form</a></div>
 </div></section>
 
-<section class="dark" id="about"><div class="wrap">
+<section class="dark" id="how"><div class="wrap">
 <div class="about-grid">
-<div class="about-copy"><div class="kicker">Your local small-jobs service</div><h2>Hi, I’m Reece.</h2><p>I run RM Small Jobs around Motherwell, helping with the household jobs you need a hand with.</p><p>I’ll be clear about what I can take on, agree the work with you and treat your home with care.</p></div>
-<div class="process" id="how" aria-labelledby="howTitle"><h3 id="howTitle">How it works</h3><ol>
+<div class="process" aria-labelledby="howTitle"><h3 id="howTitle">How it works</h3><ol>
 <li><div><strong>Tell me about the job</strong><span>Send the details, your postcode or town, and any useful photos.</span></div></li>
 <li><div><strong>Agree the quote</strong><span>I’ll check the job and location, then discuss the price with you.</span></div></li>
 <li><div><strong>Arrange a time</strong><span>Once we’ve agreed the work and price, we’ll arrange a suitable time.</span></div></li>
 </ol></div>
+<div class="about-copy" id="about"><div class="kicker">Your local small-jobs service</div><h2>Hi, I’m Reece.</h2><p>I run RM Small Jobs around Motherwell, helping with the household jobs you need a hand with.</p><p>I’ll be clear about what I can take on, agree the work with you and treat your home with care.</p></div>
 </div>
 <div class="coverage" id="areas"><h3>Areas I cover</h3><p><strong id="cmsAreas">Motherwell, Wishaw and Bellshill.</strong> Nearby? Send your postcode and I’ll check whether the location works for the job.</p></div>
 </div></section>
